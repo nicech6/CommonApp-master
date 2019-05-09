@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:windowSoftInputMode="adjustPan|stateHidden">
+
+    <include layout="@layout/title_bar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/txt_dp_40"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/txt_dp_20"
+                android:paddingStart="@dimen/txt_dp_20"
+                android:text="@string/tv_title_des"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_18"
+                tools:ignore="RtlSymmetry"/>
+
+            <TextView
+                android:id="@+id/tv_title_des"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="@dimen/txt_dp_20"
+                android:layout_marginRight="@dimen/txt_dp_20"
+                android:layout_marginTop="@dimen/txt_dp_3"
+                android:background="@color/white"
+                android:scrollbars="vertical"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/txt_size_17"/>
+
+            <View style="@style/horizontal_gray_10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/txt_dp_40"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/txt_dp_20"
+                android:paddingStart="@dimen/txt_dp_20"
+                android:text="@string/tv_title_fangan"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_18"
+                tools:ignore="RtlSymmetry"/>
+
+            <EditText
+                android:id="@+id/et_title_des"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="@dimen/txt_dp_20"
+                android:layout_marginRight="@dimen/txt_dp_20"
+                android:background="@color/white"
+                android:gravity="left"
+                android:hint="@string/your_idea"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/txt_dp_3"
+                android:textSize="@dimen/txt_size_16"
+                tools:ignore="RtlHardcoded"/>
+
+            <View style="@style/horizontal_gray_10"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                style="@style/mygrideview_style"
+                android:overScrollMode="never"/>
+
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/txt_dp_40"
+                android:layout_marginBottom="@dimen/txt_dp_20"
+                android:layout_marginLeft="@dimen/txt_dp_20"
+                android:layout_marginRight="@dimen/txt_dp_20"
+                android:layout_marginTop="@dimen/txt_dp_15"
+                android:background="@color/blue"
+                android:gravity="center"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_16"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

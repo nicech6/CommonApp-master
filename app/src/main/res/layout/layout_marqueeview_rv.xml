@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/txt_dp_5"
+    tools:ignore="RtlSymmetry">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:background="@drawable/shape_red_bg"
+            android:gravity="center"
+            android:padding="@dimen/txt_dp_3"
+            android:text="设备类型"
+            android:textColor="@color/mvp_home_red"
+            android:textSize="@dimen/txt_size_12"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/txt_dp_3"
+            android:layout_weight="1.2"
+            android:background="@drawable/shape_red_bg"
+            android:gravity="center"
+            android:padding="@dimen/txt_dp_3"
+            android:text="报警时间"
+            android:textColor="@color/mvp_home_red"
+            android:textSize="@dimen/txt_size_12"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/txt_dp_3"
+            android:layout_weight="1.2"
+            android:background="@drawable/shape_red_bg"
+            android:gravity="center"
+            android:padding="@dimen/txt_dp_3"
+            android:text="安装位置"
+            android:textColor="@color/mvp_home_red"
+            android:textSize="@dimen/txt_size_12"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/txt_dp_3"
+            android:layout_weight="1.2"
+            android:background="@drawable/shape_red_bg"
+            android:gravity="center"
+            android:padding="@dimen/txt_dp_3"
+            android:text="监控区域"
+            android:textColor="@color/mvp_home_red"
+            android:textSize="@dimen/txt_size_12"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/txt_dp_10"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/mvp_home_item_txt"
+            android:textSize="@dimen/txt_size_15"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/txt_dp_3"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/mvp_home_item_txt"
+            android:textSize="@dimen/txt_size_15"/>
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/txt_dp_3"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/mvp_home_item_txt"
+            android:textSize="@dimen/txt_size_15"/>
+
+        <TextView
+            android:id="@+id/tv_area"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/txt_dp_3"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/mvp_home_item_txt"
+            android:textSize="@dimen/txt_size_15"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.project.wisdomfirecontrol">
+
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 读取扩展卡数据 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!--录音权限-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions"/>
+    <!--android 8.0-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <!--短信-->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+
+    <uses-permission android:name="android.permission.READ_SMS"/>
+
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <!--相机-->
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <uses-permission android:name="android.permission.ACCESS_GPS"/>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true"/>
+
+    <application
+        android:name="com.project.wisdomfirecontrol.firecontrol.base.MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/icon_app"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@drawable/icon_app"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/Notitle"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
+        <activity
+            android:name="com.mvp_0726.project_0726.login.ui.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Fullscreen">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.mvp_0726.project_0726.login.ui.LoginActivity"
+            android:theme="@style/AppTheme_no"/>
+        <activity
+            android:name="com.mvp_0726.project_0726.home.ui.TestActivity"
+            android:theme="@style/AppTheme_no"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_login_splash.RegisterFirstActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_login_splash.RegisterSecondActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_login_splash.SelectUnitOrSepuviseActivity"
+            android:theme="@style/Fullscreen"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.Main_UnitActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.ConnectUnitActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.PatrolclockActivity"
+            android:theme="@style/AppTheme_no"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.RectificationDocumentActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.RectificationTitleActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_common.DecumentManageActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_common.SystemSettingActivity"
+            android:theme="@style/AppTheme_no"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.HistoryDecumentActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_common.AboutVersionCodeActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.mvp_0726.project_0726.login.ui.ChangePasswordActivity"
+            android:theme="@style/AppTheme_no"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.Unit_CommonConnectUnitActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_supevise.Supevise_CommonConnectUnitActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_common.FireInspectionActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_setting.SettingManagerActivity"
+            android:theme="@style/Notitle"/>
+        <!--修改-->
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_supevise.Main_SupevisetChangeActivity"
+            android:launchMode="standard"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.Unit_StatementChangeActivity"
+            android:launchMode="standard"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.HiddenTroubleReportActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_video.VideoSytemListActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_video.VideoCameraActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_video.VideoCameraZooActivity"
+            android:theme="@style/Notitle"/>
+
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_common.MySystemInfosActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.ui.activity_login_splash.SreachActivity"
+            android:theme="@style/Notitle"/>
+
+        <activity
+            android:name="com.project.wisdomfirecontrol.firecontrol.citySelector.CitySelecterActivity"
+            android:theme="@style/Notitle"/>
+
+        <activity
+            android:name=".firecontrol.ui.activity_setting.NewAddMonitoringAreaFirstActivity"
+            android:theme="@style/Notitle"/>
+
+        <activity
+            android:name=".firecontrol.ui.activity_setting.QRcodeActivity"
+            android:theme="@style/Notitle"/>
+
+        <activity
+            android:name=".firecontrol.ui.activity_setting.AddNewSettingActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name=".firecontrol.ui.activity_setting.SettingInfosActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name=".firecontrol.ui.activity_setting.ChangerSettingActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name=".firecontrol.ui.activity_setting.QRChangecodeActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name=".firecontrol.ui.activity_setting.MonitoringAreaInfosActivity"
+            android:theme="@style/Notitle"/>
+        <activity
+            android:name=".firecontrol.ui.activity_setting.ChangeMonitoringAreaFirstActivity"
+            android:theme="@style/Notitle"/>
+
+        <activity
+            android:name="com.mvp_0726.project_0726.online_unit.ui.activity.SettingPoliceOnlineActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_no"/>
+        <activity
+            android:name=".firecontrol.ui.activity_online.SettingCallOnlineInfosActivity"
+            android:theme="@style/Notitle"/>
+
+        <activity
+            android:name=".firecontrol.ui.activity_common.MainChangeActivity"/>
+        <activity
+            android:name=".firecontrol.ui.activity_common.ChangeCommonConnectUnitActivity"/>
+        <activity android:name=".firecontrol.ui.activity_common.OnlineUnitActivity"/>
+
+        <!--MVP 0726-->
+        <!--第二期首页-->
+        <activity
+            android:name="com.mvp_0726.project_0726.home.ui.MvpMainActivity"
+            android:theme="@style/AppTheme_no"/>
+        <!--第三期-->
+        <activity
+            android:name="com.mvp_0726.project_0726.home.ui.MvpThirdMainActivity"
+            android:theme="@style/AppTheme_no"/>
+        <activity
+            android:name="com.mvp_0726.project_0726.file.FileDisplayActivity"
+            android:theme="@style/AppTheme_no"/>
+        <activity
+            android:name="com.mvp_0726.project_0726.web.ui.WebH5Activity"
+            android:theme="@style/AppTheme_no">
+
+            <intent-filter>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+                <data
+                    android:host="pay.com"
+                    android:pathPrefix="/mpos"
+                    android:scheme="finance"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity android:name="com.mvp_0726.project_0726.ui.setting.NewSettingManagerActivity"/>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
+        <!--========================百度地图（begin）=============================-->
+        <!--开发版  U4ehEFAYcnhizCvZMwDBw2r6HKqsuCIS  or发布版 D03dS2ew7gKve0xpG5F3ZjQyVBYGoPHz-->
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="D03dS2ew7gKve0xpG5F3ZjQyVBYGoPHz"/>
+
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+        </service>
+        <!--========================百度地图（end）=============================-->
+
+        <!--短信-->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden"/>
+
+        <!-- 监听网络变化的广播 -->
+        <receiver
+            android:name="com.mvp_0726.common.base.HttpErrorReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

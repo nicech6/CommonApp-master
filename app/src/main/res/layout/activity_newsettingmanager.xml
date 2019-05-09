@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
+
+    <include layout="@layout/title_bar"/>
+
+    <LinearLayout
+        android:id="@+id/ll_four_type"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_40"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_bg_gray_99"
+            android:gravity="center"
+            android:text="安装位置"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText"/>
+
+        <View style="@style/vertical_line"/>
+
+        <TextView
+            android:id="@+id/tv_item_type"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_bg_gray_99"
+            android:gravity="center"
+            android:text="设备类型"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText"/>
+
+        <View style="@style/vertical_line"/>
+
+        <TextView
+            android:id="@+id/tv_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_bg_gray_99"
+            android:gravity="center"
+            android:text="安装时间"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_14"
+            android:visibility="visible"
+            tools:ignore="HardcodedText"/>
+
+        <View style="@style/vertical_line"/>
+
+        <TextView
+            android:id="@+id/tv_item_type_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_bg_gray_99"
+            android:gravity="center"
+            android:text="监控区域"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText"/>
+
+        <View style="@style/vertical_line"/>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_line"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/tv_no_datas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/txt_dp_8"
+        android:text="暂无数据"
+        android:visibility="gone"
+        tools:ignore="HardcodedText"/>
+
+
+    <TextView
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_40"
+        android:background="@drawable/shape_blue"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_size_15"
+        android:textStyle="bold"
+        android:visibility="visible"
+        tools:ignore="HardcodedText"/>
+
+    <LinearLayout
+        android:id="@+id/ll_select"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_45"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btn_all_select"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:text="全选"
+            android:textColor="#ed660c"/>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="@dimen/txt_dp_30"
+            android:layout_gravity="center"
+            android:background="#ed660c"/>
+
+        <Button
+            android:id="@+id/btn_all_delect"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:text="删除"
+            android:textColor="#ed660c"/>
+
+    </LinearLayout>
+
+</LinearLayout>

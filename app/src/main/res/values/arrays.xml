@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="url">
+        <item>http://ww4.sinaimg.cn/large/006uZZy8jw1faic1xjab4j30ci08cjrv.jpg</item>
+        <item>http://ww4.sinaimg.cn/large/006uZZy8jw1faic21363tj30ci08ct96.jpg</item>
+        <item>http://ww4.sinaimg.cn/large/006uZZy8jw1faic259ohaj30ci08c74r.jpg</item>
+    </array>
+
+    <array name="title">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </array>
+
+    <array name="main_title">
+        <item>首页</item>
+        <item>我的</item>
+    </array>
+
+    <array name="home_title">
+        <item>在线监测</item>
+        <item>统计分析</item>
+        <item>安全等级</item>
+        <item>安全巡检</item>
+        <item>行政公文</item>
+    </array>
+
+    <array name="home_online">
+        <item>联网设备</item>
+        <item>报警设备</item>
+        <item>故障设备</item>
+    </array>
+    <array name="home_analyze">
+        <item>联网设备</item>
+        <item>报警统计</item>
+        <item>故障统计</item>
+    </array>
+    <array name="home_safe">
+        <item>单位年度</item>
+        <item>单位月度</item>
+        <item>资质管理</item>
+    </array>
+    <array name="home_firecorol">
+        <item>值班人员</item>
+        <!--<item>消防巡检</item>-->
+        <item>巡检打卡</item>
+        <item>隐患上报</item>
+        <item>巡检记录</item>
+        <item>隐患记录</item>
+    </array>
+
+    <array name="home_firecorol_fire">
+        <item>巡检打卡</item>
+        <item>隐患上报</item>
+        <item>巡检记录</item>
+        <item>隐患记录</item>
+    </array>
+    <array name="home_decument">
+        <item>消防整改</item>
+        <!--<item>整改正文</item>-->
+        <item>消防通知</item>
+    </array>
+    <array name="home_sudoku">
+        <item>联网企业</item>
+        <item>报警设备</item>
+        <item>故障设备</item>
+        <item>公共消防</item>
+        <item>统计分析</item>
+        <item>消防等级</item>
+        <item>行政公文</item>
+        <item>视频监管</item>
+        <item>设备管理</item>
+        <item>系统设置</item>
+    </array>
+
+    <array name="home_sudoku_item">
+        <item>联网设备</item>
+        <item>报警设备</item>
+        <item>故障设备</item>
+        <item>统计分析</item>
+        <item>安全等级</item>
+        <item>安全人员</item>
+        <item>行政公文</item>
+        <item>视频监管</item>
+        <item>设备管理</item>
+        <item>系统设置</item>
+    </array>
+
+    <array name="home_video">
+        <item>辖区监控</item>
+        <item>基层监控</item>
+    </array>
+
+    <array name="home_sudoku_h5">
+        <item>联网设备界面</item>
+        <item>消防报警界面</item>
+        <item>设备故障界面</item>
+
+        <item>消防监控统计分析</item>
+        <item>消防报警统计分析</item>
+        <item>设备故障统计分析</item>
+
+        <item>联网单位年度安全等级</item>
+        <item>联网单位月度安全等级</item>
+
+        <item>值班人员</item>
+        <item>巡检记录</item>
+        <item>隐患记录</item>
+
+        <item>消防通知公文</item>
+    </array>
+
+    <string-array name="countries_list_en" translatable="false">
+        <item>Thailand                   *+66   </item>
+    </string-array>
+
+    <string-array name="countries_list_zh" translatable="false">
+        <item>泰国               *+66   </item>
+    </string-array>
+
+    <string-array name="permissions">
+        <item>没有此权限，无法开启这个功能，请开启权限</item>
+        <item>没有此权限，无法开启这个功能，请开启权限</item>
+        <item>没有此权限，无法开启这个功能，请开启权限</item>
+        <item>没有此权限，无法开启这个功能，请开启权限</item>
+        <item>没有此权限，无法开启这个功能，请开启权限</item>
+        <item>没有此权限，无法开启这个功能，请开启权限</item>
+        <item>没有此权限，无法开启这个功能，请开启权限</item>
+        <item>没有此权限，无法开启这个功能，请开启权限</item>
+        <item>没有此权限，无法开启这个功能，请开启权限</item>
+    </string-array>
+</resources>

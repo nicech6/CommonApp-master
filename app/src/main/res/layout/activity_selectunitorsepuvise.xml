@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_person_type"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+    <!--android:background="@drawable/bg"-->
+    <include layout="@layout/title_bar"/>
+
+    <TextView
+        android:id="@+id/tv_spase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@color/transparent">
+
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gifimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@color/transparent"
+            android:src="@drawable/gifphoto"/>
+
+
+        <TextView
+            android:id="@+id/tv_login_type_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_45"
+            android:layout_below="@id/gifimage"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/selector_btn_login"/>
+
+        <TextView
+            android:id="@+id/tv_login_type_supevice"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_45"
+            android:layout_below="@id/tv_login_type_unit"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/txt_dp_22"
+            android:background="@drawable/selector_btn_regist"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_below="@id/tv_login_type_supevice"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/txt_dp_10"
+            android:layout_marginTop="@dimen/txt_dp_45"
+            android:background="@color/transparent"
+            android:src="@drawable/logo"/>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

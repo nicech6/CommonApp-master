@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/ll_login_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_1px"/>
+
+    <include layout="@layout/title_bar_mvp"/>
+
+
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/txt_size_24"
+        android:textStyle="bold"/>
+
+
+    <EditText
+        android:id="@+id/et_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_45"
+        android:layout_marginEnd="@dimen/txt_dp_45"
+        android:layout_marginStart="@dimen/txt_dp_45"
+        android:layout_marginTop="@dimen/txt_dp_40"
+        android:background="@drawable/logintxtbg"
+        android:gravity="center"
+        android:hint="@string/intxt"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="@dimen/txt_size_16"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_45"
+        android:layout_marginEnd="@dimen/txt_dp_45"
+        android:layout_marginStart="@dimen/txt_dp_45"
+        android:layout_marginTop="@dimen/txt_dp_30"
+        android:background="@drawable/loginpwdbgext"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_user_pwd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/txt_dp_45"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:hint="@string/initxtpwd"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_size_16"/>
+
+        <Button
+            android:id="@+id/btn_eye_type"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/eye_close"
+            android:gravity="center"
+            tools:ignore="RtlHardcoded"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="@dimen/txt_dp_45"
+        android:layout_marginStart="@dimen/txt_dp_45"
+        android:layout_marginTop="30dp"
+        android:background="@color/btn_get_sms_code"
+        android:text="@string/btn_login"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+</LinearLayout>
+
+
+
+
+
+
+

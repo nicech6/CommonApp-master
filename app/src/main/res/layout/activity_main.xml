@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.project.wisdomfirecontrol.firecontrol.ui.activity_unit.Main_UnitActivity">
+
+    <include layout="@layout/title_bar"/>
+
+    <com.project.wisdomfirecontrol.firecontrol.ui.view.MyViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <View style="@style/horizontal_line"/>
+
+    <LinearLayout
+        android:id="@+id/ll_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"/>
+
+</LinearLayout>

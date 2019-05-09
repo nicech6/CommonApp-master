@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_bar"/>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/txt_dp_60"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_36"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginTop="@dimen/txt_dp_8"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:text="安装位置："
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_13"/>
+
+        <EditText
+            android:id="@+id/tv_company_name"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_36"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginEnd="@dimen/txt_dp_26"
+            android:layout_marginTop="@dimen/txt_dp_8"
+            android:layout_weight="2"
+            android:background="@drawable/shape_sousuostu"
+            android:gravity="center_vertical"
+            android:hint="（10个汉字内）"
+            android:paddingStart="@dimen/txt_dp_5"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_36"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginTop="@dimen/txt_dp_20"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:text="设备类型："
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_personal_name"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_36"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginEnd="@dimen/txt_dp_26"
+            android:layout_marginTop="@dimen/txt_dp_20"
+            android:layout_weight="2"
+            android:background="@drawable/shape_sousuostu"
+            android:drawableRight="@drawable/bar_icon_up"
+            android:paddingEnd="@dimen/txt_dp_8"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/txt_dp_5"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_36"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginTop="@dimen/txt_dp_20"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:text="设备号："
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText"/>
+
+        <EditText
+            android:id="@+id/tv_addpesoanl_name"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_36"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginEnd="@dimen/txt_dp_26"
+            android:layout_marginTop="@dimen/txt_dp_20"
+            android:layout_weight="2"
+            android:background="@drawable/shape_sousuostu"
+            android:gravity="center_vertical"
+            android:hint="请输入设备号"
+            android:paddingStart="@dimen/txt_dp_5"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_30"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/txt_dp_3"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_13"/>
+
+        <TextView
+            android:id="@+id/tv_phone_tel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_30"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginEnd="@dimen/txt_dp_26"
+            android:layout_marginTop="@dimen/txt_dp_3"
+            android:layout_weight="2"
+            android:background="@drawable/shape_blue"
+            android:gravity="center"
+            android:text="重新扫描设备号"
+            android:paddingStart="@dimen/txt_dp_5"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_36"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginTop="@dimen/txt_dp_20"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:text="所属监控区："
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_select_area"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_36"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginEnd="@dimen/txt_dp_26"
+            android:layout_marginTop="@dimen/txt_dp_20"
+            android:layout_weight="2"
+            android:hint="请选择监控区"
+            android:background="@drawable/shape_sousuostu"
+            android:drawableRight="@drawable/bar_icon_up"
+            android:paddingEnd="@dimen/txt_dp_8"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/txt_dp_5"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="@dimen/txt_dp_150"
+        android:layout_height="@dimen/txt_dp_40"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/txt_dp_60"
+        android:background="@drawable/shape_blue"
+        android:layout_marginBottom="@dimen/txt_dp_20"
+        android:gravity="center"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_size_14"
+        android:textStyle="bold"/>
+
+</LinearLayout>

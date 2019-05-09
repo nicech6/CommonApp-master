@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/title_bar_mvp"/>
+
+    <View style="@style/horizontal_line"/>
+
+    <ProgressBar
+        android:id="@+id/web_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progressbar_bg_style"
+        android:visibility="visible"/>
+
+    <com.tencent.smtt.sdk.WebView
+        android:id="@+id/webview"
+        android:process=":remote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

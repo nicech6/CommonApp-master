@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <include layout="@layout/title_bar"/>
+
+    <LinearLayout
+        android:id="@+id/tv_user_name_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/tv_txt_photo"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/txt_size_16"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/iv_user_logo"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:padding="5dp"
+            tools:ignore="ContentDescription"/>
+
+        <ImageView
+            android:id="@+id/tv_user_company"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/bar_icon_dj"
+            tools:ignore="ContentDescription,RtlSymmetry"/>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_line_left"/>
+
+    <LinearLayout
+        style="@style/ll_h40_p15"
+        tools:ignore="RtlSymmetry,UseCompoundDrawables">
+
+        <TextView
+            style="@style/style_txt_color_black"
+            android:gravity="center_vertical"
+            android:text="@string/tv_name"/>
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            style="@style/style_txt_color_gray"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical|right"
+            tools:ignore="RtlHardcoded"/>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_line_left"/>
+
+    <LinearLayout
+        style="@style/ll_h40_p15"
+        tools:ignore="RtlSymmetry,UseCompoundDrawables">
+
+        <TextView
+            style="@style/style_txt_color_black"
+            android:gravity="center_vertical"
+            android:text="@string/tv_txt_phone"/>
+
+        <TextView
+            android:id="@+id/tv_user_photo_num"
+            style="@style/style_txt_color_gray"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical|right"
+            tools:ignore="RtlHardcoded"/>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_gray_10"/>
+
+    <LinearLayout
+        style="@style/ll_h40_p15"
+        android:visibility="gone"
+        tools:ignore="RtlSymmetry,UseCompoundDrawables">
+
+        <TextView
+            style="@style/style_txt_color_black"
+            android:gravity="center_vertical"
+            android:text="@string/tv_time"/>
+
+        <TextView
+            android:id="@+id/tv_user_goworktime"
+            style="@style/style_txt_color_gray"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical|right"
+            tools:ignore="RtlHardcoded"/>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_line_left"/>
+
+    <LinearLayout
+        android:id="@+id/tv_change_pwd"
+        style="@style/ll_h40_p15"
+        tools:ignore="RtlSymmetry,UseCompoundDrawables">
+
+
+        <TextView
+            style="@style/tv_h_match_s16_cblack"
+            android:text="@string/tv_changepwd"/>
+
+        <ImageView
+            style="@style/iv_right_10_src"
+            android:src="@drawable/bar_icon_dj"
+            tools:ignore="ContentDescription,RtlSymmetry"/>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_line_left"/>
+
+    <LinearLayout
+        android:id="@+id/tv_app_dail"
+        style="@style/ll_h40_p15"
+        tools:ignore="RtlSymmetry,UseCompoundDrawables">
+
+        <TextView
+            style="@style/tv_h_match_s16_cblack"
+            android:text="@string/tv_app_detaicl"/>
+
+        <ImageView
+            style="@style/iv_right_10_src"
+            android:src="@drawable/bar_icon_dj"
+            tools:ignore="ContentDescription,RtlSymmetry"/>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_line_left"/>
+
+    <LinearLayout
+        android:id="@+id/tv_user_back"
+        style="@style/ll_h40_p15"
+        tools:ignore="RtlSymmetry,UseCompoundDrawables">
+
+        <TextView
+            style="@style/tv_h_match_s16_cblack"
+            android:text="@string/out_login"/>
+
+        <ImageView
+            style="@style/iv_right_10_src"
+            android:src="@drawable/bar_icon_dj"
+            tools:ignore="ContentDescription,RtlSymmetry"/>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_gray_10"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

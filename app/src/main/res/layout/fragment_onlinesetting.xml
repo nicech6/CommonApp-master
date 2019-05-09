@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.project.wisdomfirecontrol.firecontrol.ui.view.TabPageIndicator
+        android:id="@+id/indicator1"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_45"/>
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/stl"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:overScrollMode="never"
+        app:tl_indicator_color="@color/blue"
+        app:tl_indicator_corner_radius="1.5dp"
+        app:tl_indicator_height="1dp"
+        app:tl_indicator_width_equal_title="true"
+        app:tl_tab_padding="15dp"
+        app:tl_tab_space_equal="false"
+        app:tl_textSelectColor="@color/blue"
+        app:tl_textUnselectColor="@color/gray" />
+
+    <View style="@style/horizontal_line"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"/>
+
+
+</LinearLayout>

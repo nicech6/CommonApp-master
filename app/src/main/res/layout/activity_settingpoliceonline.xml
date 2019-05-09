@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_common"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_1px"/>
+
+    <include layout="@layout/title_bar_mvp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_70"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/ll_item_tab_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/txt_dp_10"
+                android:layout_marginEnd="@dimen/txt_dp_15"
+                android:layout_marginStart="@dimen/txt_dp_10"
+                android:layout_marginTop="@dimen/txt_dp_10"
+                android:background="@color/transparent">
+
+                <TextView
+                    android:id="@+id/tv_rv_item_num_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/shape_label_orange"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_size_12"
+                    android:visibility="visible"
+                    tools:ignore="RtlHardcoded"/>
+
+                <com.mvp_0726.common.view.DrawableCenterTextView
+                    android:id="@+id/tv_item_name_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_rv_item_num_1"
+                    android:layout_centerInParent="true"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/txt_dp_2"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/txt_size_15"
+                    tools:ignore="NestedWeights,RtlSymmetry"/>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <View style="@style/vertical_line"/>
+
+        <LinearLayout
+            android:id="@+id/ll_item_tab_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_bg_gray"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/txt_dp_10"
+                android:layout_marginEnd="@dimen/txt_dp_15"
+                android:layout_marginStart="@dimen/txt_dp_10"
+                android:layout_marginTop="@dimen/txt_dp_10"
+                android:background="@color/transparent">
+
+                <TextView
+                    android:id="@+id/tv_rv_item_num_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/shape_label_orange"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_size_12"
+                    android:visibility="visible"
+                    tools:ignore="RtlHardcoded"/>
+
+                <com.mvp_0726.common.view.DrawableCenterTextView
+                    android:id="@+id/tv_item_name_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_rv_item_num_2"
+                    android:layout_centerInParent="true"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/txt_dp_2"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/txt_size_15"
+                    tools:ignore="NestedWeights,NotSibling,RtlSymmetry"/>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <View style="@style/vertical_line"/>
+
+        <LinearLayout
+            android:id="@+id/ll_item_tab_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/txt_dp_10"
+                android:layout_marginEnd="@dimen/txt_dp_15"
+                android:layout_marginStart="@dimen/txt_dp_10"
+                android:layout_marginTop="@dimen/txt_dp_10"
+                android:background="@color/transparent">
+
+
+                <TextView
+                    android:id="@+id/tv_rv_item_num_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/shape_label_orange"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_size_12"
+                    android:visibility="visible"
+                    tools:ignore="RtlHardcoded"/>
+
+                <com.mvp_0726.common.view.DrawableCenterTextView
+                    android:id="@+id/tv_item_name_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_rv_item_num_3"
+                    android:layout_centerInParent="true"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/txt_dp_2"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/txt_size_15"
+                    tools:ignore="HardcodedText,NestedWeights,RtlSymmetry"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_line"/>
+
+    <FrameLayout
+        android:id="@+id/framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/tv_company_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_40"
+        android:background="@color/mvp_title_blue"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_size_15"/>
+
+</LinearLayout>

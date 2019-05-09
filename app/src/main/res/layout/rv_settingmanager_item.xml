@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_item"
+              android:layout_width="match_parent"
+              android:layout_height="45dp"
+              android:background="@drawable/shape_bg_gray"
+              android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/cb_item_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_dp_8"
+        android:background="@drawable/selector_check_bg"
+        android:button="@null"
+        android:visibility="gone"/>
+
+
+    <TextView
+        android:id="@+id/tv_item_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/txt_size_12"/>
+
+
+    <TextView
+        android:id="@+id/tv_item_type"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/txt_size_12"/>
+
+
+    <TextView
+        android:id="@+id/tv_item_time"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/txt_size_12"
+        android:visibility="visible"/>
+
+
+    <TextView
+        android:id="@+id/tv_item_type_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/txt_size_12"/>
+
+
+</LinearLayout>

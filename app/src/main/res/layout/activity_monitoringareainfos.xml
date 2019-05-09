@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_dp_20"
+        android:layout_marginTop="@dimen/txt_dp_10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_30"
+            android:gravity="center_vertical|right"
+            android:text="监控区名称："
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_area_name"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/txt_dp_30"
+            android:layout_marginEnd="@dimen/txt_dp_40"
+            android:layout_weight="5"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/item_text_01"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_dp_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_30"
+            android:gravity="center_vertical|right"
+            android:text="负责人："
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_area_personal_name"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_30"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:textColor="@color/item_text_01"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+        <TextView
+            android:id="@+id/tv_area_personal_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_30"
+            android:layout_marginBottom="@dimen/txt_dp_5"
+            android:layout_marginStart="@dimen/txt_dp_40"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:textColor="@color/item_text_01"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_dp_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_30"
+            android:gravity="center_vertical|right"
+            android:text="监控区地址："
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_area_address"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_40"
+            android:background="@color/transparent"
+            android:fadeScrollbars="false"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/txt_dp_10"
+            android:scrollbars="vertical"
+            android:textColor="@color/item_text_01"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_24"
+        android:layout_marginBottom="@dimen/txt_dp_5"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_dp_20"
+        android:layout_marginTop="@dimen/txt_dp_5"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:layout_width="@dimen/txt_dp_40"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="经度："
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_lng"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/list_divider"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/txt_dp_3"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/txt_size_12"
+            tools:ignore="HardcodedText,RtlSymmetry"/>
+
+
+        <TextView
+            android:layout_width="@dimen/txt_dp_40"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/txt_dp_15"
+            android:gravity="center"
+            android:text="纬度："
+            android:textSize="@dimen/txt_size_13"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_lat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/txt_dp_15"
+            android:layout_weight="1"
+            android:background="@color/list_divider"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/txt_dp_3"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/txt_size_12"
+            tools:ignore="HardcodedText"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/txt_dp_15"
+        android:layout_weight="1">
+
+        <com.baidu.mapapi.map.TextureMapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="@dimen/txt_dp_150"
+            android:layout_height="@dimen/txt_dp_40"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/txt_dp_20"
+            android:layout_marginTop="@dimen/txt_dp_40"
+            android:background="@drawable/shape_blue"
+            android:gravity="center"
+            android:text="关闭"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_size_14"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

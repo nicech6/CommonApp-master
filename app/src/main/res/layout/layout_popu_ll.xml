@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_red_hand"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_really_police"
+        android:layout_width="@dimen/txt_dp_120"
+        android:layout_height="@dimen/txt_dp_40"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/txt_dp_30"
+        android:background="@drawable/shape_red_hand"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/txt_size_14"/>
+
+    <TextView
+        android:id="@+id/tv_jia_police"
+        android:layout_width="@dimen/txt_dp_120"
+        android:layout_height="@dimen/txt_dp_40"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/txt_dp_30"
+        android:background="@drawable/shape_red_hand"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/txt_size_14"/>
+
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_width="@dimen/txt_dp_120"
+        android:layout_height="@dimen/txt_dp_40"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/txt_dp_30"
+        android:background="@drawable/shape_red_hand"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/txt_size_14"/>
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="@dimen/txt_dp_120"
+        android:layout_height="@dimen/txt_dp_40"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/txt_dp_30"
+        android:layout_marginTop="@dimen/txt_dp_30"
+        android:background="@drawable/shape_red_hand"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textSize="@dimen/txt_size_14"/>
+
+</LinearLayout>

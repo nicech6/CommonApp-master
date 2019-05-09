@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/activity_second"
+             android:layout_width="match_parent"
+             android:fitsSystemWindows="true"
+             android:background="@color/transparent"
+             android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fl_my_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:visibility="visible"
+        />
+
+    <include layout="@layout/title_bar"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:text="将二维码放入框内，即可自动进行扫描"
+        android:textColor="@color/encode_view"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/transparent"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/tv_setting_numbyhand"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="#7e7d74"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="手动输入设备号"
+            android:textColor="@color/encode_view"
+            android:textSize="15sp"/>
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_add_pressed"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="闪光灯"
+                android:background="@color/transparent"
+                android:textColor="#FFFFFF"
+                />
+        </LinearLayout>
+
+        <!-- <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:orientation="vertical"
+             android:gravity="center_horizontal"
+             >
+
+             <ImageView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:background="@mipmap/ic_launcher"
+                 />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="封面"
+                 android:layout_marginTop="10dp"
+                 android:textColor="#FFFFFF"
+                 />
+
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:orientation="vertical"
+             android:gravity="center_horizontal"
+             >
+
+             <ImageView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:background="@mipmap/ic_launcher"
+                 />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="街景"
+                 android:layout_marginTop="10dp"
+                 android:textColor="#FFFFFF"
+                 />
+
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="center_horizontal"
+             android:orientation="vertical"
+             >
+
+             <ImageView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:background="@mipmap/ic_launcher"
+                 />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="翻译"
+                 android:layout_marginTop="10dp"
+                 android:textColor="#FFFFFF"
+                 />
+
+         </LinearLayout>-->
+
+    </LinearLayout>
+
+</FrameLayout>

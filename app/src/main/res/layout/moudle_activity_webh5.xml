@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_1px"/>
+
+    <include layout="@layout/title_bar_mvp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_45"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <com.mvp_0726.common.view.DrawableCenterTextView
+            android:id="@+id/tv_item_name_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/txt_size_15"
+            tools:ignore="NestedWeights,RtlSymmetry"/>
+
+        <View style="@style/vertical_line"/>
+
+        <com.mvp_0726.common.view.DrawableCenterTextView
+            android:id="@+id/tv_item_name_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/txt_size_15"
+            tools:ignore="NestedWeights,RtlSymmetry"/>
+
+        <View style="@style/vertical_line"/>
+
+
+        <com.mvp_0726.common.view.DrawableCenterTextView
+            android:id="@+id/tv_item_name_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/txt_size_15"
+            android:visibility="visible"
+            tools:ignore="NestedWeights,RtlSymmetry"/>
+
+        <com.mvp_0726.common.view.DrawableCenterTextView
+            android:id="@+id/tv_item_name_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/txt_size_15"
+            android:visibility="gone"
+            tools:ignore="NestedWeights,RtlSymmetry"/>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_line"/>
+
+    <ProgressBar
+        android:id="@+id/web_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progressbar_bg_style"
+        android:visibility="visible"/>
+
+    <com.tencent.smtt.sdk.WebView
+        android:id="@+id/webview"
+        android:process=":remote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>

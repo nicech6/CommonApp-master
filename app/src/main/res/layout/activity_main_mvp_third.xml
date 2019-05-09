@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <include
+        layout="@layout/title_bar_mvp"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rl_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/qyjg_bg">
+
+        <TextView
+            android:id="@+id/tv_app_company"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_dp_45"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/txt_dp_22"
+            android:paddingRight="20dp"
+            android:background="@color/transition"
+            android:gravity="right|center_vertical"
+            android:text="3333"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_size_18"
+            tools:ignore="HardcodedText" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_app_company"
+            android:layout_marginTop="@dimen/txt_dp_45"
+            android:background="@color/transition" />
+
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

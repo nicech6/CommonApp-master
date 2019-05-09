@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_1px"/>
+
+    <include layout="@layout/title_bar_mvp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_dp_30"
+        android:layout_marginTop="@dimen/txt_dp_10"
+        android:drawablePadding="@dimen/txt_dp_2"
+        android:drawableStart="@drawable/gray_line"
+        android:gravity="center_vertical"
+        android:text="单位全称"
+        android:textSize="@dimen/txt_size_14"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/tv_unit_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_40"
+        android:layout_marginEnd="@dimen/txt_dp_45"
+        android:layout_marginStart="@dimen/txt_dp_45"
+        android:gravity="center_vertical"
+        android:textColor="@color/mvp_title_blue"
+        android:textSize="@dimen/txt_size_15"/>
+
+    <View
+        style="@style/horizontal_line_w"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_size_20"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_dp_30"
+        android:layout_marginTop="@dimen/txt_dp_10"
+        android:drawablePadding="@dimen/txt_dp_2"
+        android:drawableStart="@drawable/gray_line"
+        android:gravity="center_vertical"
+        android:text="单位负责人"
+        android:textSize="@dimen/txt_size_14"
+        tools:ignore="HardcodedText"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_40"
+        android:layout_marginEnd="@dimen/txt_dp_45"
+        android:layout_marginStart="@dimen/txt_dp_45"
+        android:layout_marginTop="@dimen/txt_dp_5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_unit_personla_nametel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/mvp_title_blue"
+            android:textSize="@dimen/txt_size_15"/>
+
+        <TextView
+            android:id="@+id/tv_unit_personla_tel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/mvp_title_blue"
+            android:textSize="@dimen/txt_size_15"/>
+
+    </LinearLayout>
+
+
+    <View
+        style="@style/horizontal_line_w"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_size_20"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/txt_dp_30"
+        android:layout_marginTop="@dimen/txt_dp_10"
+        android:drawablePadding="@dimen/txt_dp_2"
+        android:drawableStart="@drawable/gray_line"
+        android:gravity="center_vertical"
+        android:text="消防第一联系人"
+        android:textSize="@dimen/txt_size_14"
+        tools:ignore="HardcodedText"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_40"
+        android:layout_marginEnd="@dimen/txt_dp_45"
+        android:layout_marginStart="@dimen/txt_dp_45"
+        android:layout_marginTop="@dimen/txt_dp_5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_first_personla_nametel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/mvp_title_blue"
+            android:textSize="@dimen/txt_size_15"/>
+
+        <TextView
+            android:id="@+id/tv_first_personla_tel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/mvp_title_blue"
+            android:textSize="@dimen/txt_size_15"/>
+
+    </LinearLayout>
+
+
+    <View
+        style="@style/horizontal_line_w"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_size_20"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginBottom="@dimen/txt_dp_5"
+        android:layout_marginTop="@dimen/txt_dp_5">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/txt_dp_30"
+            android:layout_marginTop="@dimen/txt_dp_10"
+            android:drawablePadding="@dimen/txt_dp_2"
+            android:drawableStart="@drawable/gray_line"
+            android:gravity="center_vertical"
+            android:text="登录账号"
+            android:textSize="@dimen/txt_size_14"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_login_name"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_40"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/name"
+            android:layout_marginEnd="@dimen/txt_dp_40"
+            android:layout_marginStart="@dimen/txt_dp_40"
+            android:gravity="center_vertical"
+            android:textColor="@color/mvp_title_blue"
+            android:textSize="@dimen/txt_size_15"/>
+
+        <TextView
+            android:id="@+id/tv_change_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_40"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/txt_dp_45"
+            android:drawableEnd="@drawable/bar_icon_dj"
+            android:drawablePadding="@dimen/txt_dp_2"
+            android:gravity="center"
+            android:text="修改密码"
+            android:textColor="@color/mvp_title_blue"
+            android:textSize="@dimen/txt_size_15"
+            tools:ignore="HardcodedText"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/horizontal_line_w"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_size_20"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_36"/>
+
+    <View style="@style/horizontal_gray_10"/>
+
+    <TextView
+        android:id="@+id/tv_app_dail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_45"
+        android:layout_marginEnd="@dimen/txt_dp_40"
+        android:layout_marginStart="@dimen/txt_dp_40"
+        android:drawableEnd="@drawable/bar_icon_dj"
+        android:drawablePadding="@dimen/txt_dp_5"
+        android:gravity="center_vertical"
+        android:text="软件详情"
+        android:textSize="@dimen/txt_size_15"
+        tools:ignore="HardcodedText"/>
+
+    <View
+        style="@style/horizontal_line_w"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_size_20"/>
+
+    <TextView
+        android:id="@+id/tv_user_back"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/txt_dp_45"
+        android:layout_marginEnd="@dimen/txt_dp_40"
+        android:layout_marginStart="@dimen/txt_dp_40"
+        android:drawableEnd="@drawable/btn_tuichu"
+        android:drawablePadding="@dimen/txt_dp_5"
+        android:gravity="center_vertical"
+        android:text="退出登录"
+        android:textSize="@dimen/txt_size_15"
+        tools:ignore="HardcodedText"/>
+
+    <View
+        style="@style/horizontal_line_w"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_size_20"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/txt_dp_20"
+        android:src="@drawable/company_logo"/>
+
+
+</LinearLayout>

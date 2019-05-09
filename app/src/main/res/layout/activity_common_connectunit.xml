@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_common"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar"/>
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/txt_dp_20"
+        android:visibility="visible"
+        android:layout_marginRight="@dimen/txt_dp_20"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_item_tab_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="2"
+                android:background="@color/transparent"
+                tools:ignore="NestedWeights">
+
+                <ImageView
+                    android:id="@+id/iv_sudoku_logo_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"/>
+
+
+                <TextView
+                    android:id="@+id/tv_rv_item_num_1"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/shape_label_orange"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    tools:ignore="RtlHardcoded"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_item_name_1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/txt_size_16"
+                tools:ignore="NestedWeights"/>
+
+            <!--<View style="@style/horizontal_line"/>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_item_tab_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="2"
+                android:background="@color/transparent"
+                tools:ignore="NestedWeights">
+
+                <ImageView
+                    android:id="@+id/iv_sudoku_logo_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"/>
+
+
+                <TextView
+                    android:id="@+id/tv_rv_item_num_2"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/shape_label_orange"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    tools:ignore="RtlHardcoded"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_item_name_2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/txt_size_16"
+                tools:ignore="NestedWeights"/>
+
+            <!--<View style="@style/horizontal_line"/>-->
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_item_tab_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="2"
+                android:background="@color/transparent"
+                tools:ignore="NestedWeights">
+
+                <ImageView
+                    android:id="@+id/iv_sudoku_logo_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"/>
+
+
+                <TextView
+                    android:id="@+id/tv_rv_item_num_3"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/shape_label_orange"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    tools:ignore="RtlHardcoded"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_item_name_3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/txt_size_16"
+                tools:ignore="NestedWeights"/>
+
+            <!--<View style="@style/horizontal_line"/>-->
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_item_tab_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="2"
+                android:background="@color/transparent"
+                tools:ignore="NestedWeights">
+
+                <ImageView
+                    android:id="@+id/iv_sudoku_logo_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"/>
+
+
+                <TextView
+                    android:id="@+id/tv_rv_item_num_4"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/shape_label_orange"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    tools:ignore="RtlHardcoded"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_item_name_4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/txt_size_16"
+                tools:ignore="NestedWeights"/>
+
+            <!--<View style="@style/horizontal_line"/>-->
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/web_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progressbar_bg_style"
+        android:visibility="visible"/>
+
+    <FrameLayout
+        android:id="@+id/framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+</LinearLayout>

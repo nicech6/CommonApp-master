@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar"/>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:ignore="UselessLeaf">
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/txt_dp_8"
+            android:orientation="vertical"
+            tools:ignore="ScrollViewSize">
+
+            <EditText
+                android:id="@+id/tv_unit_personal"
+                style="@style/edt_txt_13sp_black"
+                android:hint="单位法人"
+                tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            <EditText
+                android:id="@+id/tv_unit_personal_call"
+                style="@style/edt_txt_13sp_black"
+                android:hint="单位联系人"
+                tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            <EditText
+                android:id="@+id/tv_unit_personal_phone"
+                style="@style/edt_txt_13sp_black"
+                android:hint="联系人电话"
+                tools:ignore="HardcodedText,RtlSymmetry,TextFields"/>
+
+            <View
+                style="@style/horizontal_line_blue"
+                android:layout_marginBottom="@dimen/txt_dp_15"
+                android:layout_marginTop="@dimen/txt_dp_15"/>
+
+            <EditText
+                android:id="@+id/tv_unit_personal_first_name"
+                style="@style/edt_txt_13sp_black"
+                android:hint="消防第一联系人（必填）"
+                tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_pwd"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="35dp"
+                    android:background="@drawable/selector_treeslist_press_bg"
+                    android:button="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/txt_dp_3"
+                    android:gravity="center_vertical"
+                    android:text="与公司联系人相同"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/txt_size_12"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/tv_unit_personal_frst_phone"
+                style="@style/edt_txt_13sp_black"
+                android:hint="联系人电话（必填）"
+                tools:ignore="HardcodedText,RtlSymmetry,TextFields"/>
+
+            <EditText
+                android:id="@+id/tv_unit_personal_second_name"
+                style="@style/edt_txt_13sp_black"
+                android:hint="消防第二联系人"
+                tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            <EditText
+                android:id="@+id/tv_unit_personal_second_phone"
+                style="@style/edt_txt_13sp_black"
+                android:hint="联系人电话"
+                tools:ignore="HardcodedText,RtlSymmetry,TextFields"/>
+
+            <EditText
+                android:id="@+id/tv_unit_personal_third_name"
+                style="@style/edt_txt_13sp_black"
+                android:hint="消防第三联系人"
+                tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            <EditText
+                android:id="@+id/tv_unit_personal_third_phone"
+                style="@style/edt_txt_13sp_black"
+                android:hint="联系人电话"
+                tools:ignore="DuplicateIds,HardcodedText,RtlSymmetry,TextFields"/>
+
+            <EditText
+                android:id="@+id/tv_unit_area"
+                style="@style/edt_txt_13sp_black"
+                android:hint="单位面积"
+                tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            <EditText
+                android:id="@+id/tv_unit_personal_count"
+                style="@style/edt_txt_13sp_black"
+                android:hint="单位人数"
+                tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            <View
+                style="@style/horizontal_line_blue"
+                android:layout_marginTop="@dimen/txt_dp_15"/>
+
+
+            <LinearLayout
+                android:id="@+id/ll_children"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/txt_dp_5"
+                android:layout_marginEnd="@dimen/txt_dp_32"
+                android:layout_marginStart="@dimen/txt_dp_32"
+                android:layout_marginTop="@dimen/txt_dp_5"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/tv_play_select_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/txt_dp_36"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/shape_blue"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/txt_dp_3"
+                    android:paddingStart="@dimen/txt_dp_3"
+                    android:text="点击拍照或上传营业执照"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:ignore="HardcodedText"/>
+
+                <ImageView
+                    android:id="@+id/iv_user_logo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="@dimen/txt_dp_15"
+                    android:padding="5dp"
+                    tools:ignore="ContentDescription"/>
+
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/tv_user_phone"
+                style="@style/edt_txt_13sp_black"
+                android:hint="手机号（登录账号）"
+                tools:ignore="HardcodedText,RtlSymmetry,TextFields"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/txt_dp_5"
+                android:layout_marginEnd="@dimen/txt_dp_32"
+                android:layout_marginStart="@dimen/txt_dp_32"
+                android:layout_marginTop="@dimen/txt_dp_8"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <EditText
+                    android:id="@+id/edt_msg_pwd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/txt_dp_36"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_sousuostu"
+                    android:gravity="center_vertical"
+                    android:hint="短信验证码"
+                    android:paddingStart="@dimen/txt_dp_5"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:ignore="HardcodedText,RtlSymmetry"/>
+
+                <TextView
+                    android:id="@+id/tv_send_msg_pwd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/txt_dp_36"
+                    android:layout_marginStart="@dimen/txt_dp_15"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/shape_blue"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/txt_dp_5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edt_user_pwd"
+                style="@style/edt_txt_13sp_black"
+                android:hint="登录密码(至少包含字母数字8位)"
+                android:inputType="numberPassword"
+                tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            <EditText
+                android:id="@+id/tv_user_pwd_again"
+                style="@style/edt_txt_13sp_black"
+                android:hint="确认登录密码"
+                android:inputType="numberPassword"
+                tools:ignore="HardcodedText,RtlSymmetry"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/txt_dp_10"
+                android:background="@color/transparent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_agree"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="35dp"
+                    android:background="@drawable/selector_treeslist_press_bg"
+                    android:button="@null"/>
+
+                <TextView
+                    android:id="@+id/tv_xieye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/txt_dp_3"
+                    android:gravity="center_vertical"
+                    android:text="我同意并遵守《乆安消防云平台服务协议》"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/txt_size_12"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_success"
+                android:layout_width="@dimen/txt_dp_150"
+                android:layout_height="@dimen/txt_dp_36"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/txt_dp_30"
+                android:layout_marginTop="@dimen/txt_dp_8"
+                android:background="@drawable/shape_blue"
+                android:gravity="center"
+                android:text="完成"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_14"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText"/>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

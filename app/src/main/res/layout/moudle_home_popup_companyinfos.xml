@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/aqjg_user_bg"
+              android:orientation="vertical">
+
+    <!--android:background="@drawable/shape_red_bg"-->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/txt_dp_32"
+        android:layout_marginEnd="@dimen/txt_dp_20"
+        android:layout_marginStart="@dimen/txt_dp_20"
+        android:layout_marginTop="@dimen/txt_dp_5"
+        android:background="@color/transparent">
+
+        <TextView
+            android:id="@+id/tv_popup_company_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_size_14"/>
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_popup_company_type"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:text="重点单位"-->
+        <!--android:background="@color/transparent"-->
+        <!--android:textColor="@color/mvp_home_item_txt"-->
+        <!--android:textSize="@dimen/txt_size_13"-->
+        <!--tools:ignore="HardcodedText,RtlHardcoded"/>-->
+
+
+    </RelativeLayout>
+
+    <!-- <View
+         style="@style/horizontal_line"
+         android:layout_marginEnd="@dimen/txt_dp_20"
+         android:layout_marginStart="@dimen/txt_dp_20"/>-->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/transparent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_popup_company_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/txt_dp_20"
+            android:background="@color/transition"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_popup_company_pricipal"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/txt_dp_26"
+                android:background="@color/transition"
+                android:gravity="center"
+                android:text="消防第一负责人"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_14"/>
+
+            <TextView
+                android:id="@+id/tv_popup_company_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/txt_dp_26"
+                android:background="@color/transition"
+                android:gravity="center_vertical"
+                android:text="电话：13122221515"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_14"/>
+
+            <TextView
+                android:id="@+id/tv_popup_company_count"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/txt_dp_26"
+                android:background="@color/transition"
+                android:gravity="center_vertical"
+                android:text="企业人数：200人"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_14"/>
+
+            <TextView
+                android:id="@+id/tv_popup_company_area"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/txt_dp_26"
+                android:background="@color/transition"
+                android:gravity="center_vertical"
+                android:text="建筑面积：100平方"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_14"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

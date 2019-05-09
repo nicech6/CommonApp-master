@@ -1,0 +1,177 @@
+apply plugin: 'com.android.application'
+
+static def buildTime() {
+    def format = new Date().format("yyyyMMddHHmmss", TimeZone.getTimeZone("GMT+08"));
+    return format;
+}
+
+repositories {
+    flatDir {
+        dir 'libs'
+    }
+}
+
+android {
+
+    //程序在编译的时候会检查lint，有任何错误提示会停止build，我们可以关闭这个开关
+    lintOptions {
+        abortOnError false
+        //即使报错也不会停止打包
+        checkReleaseBuilds false
+        //打包release版本的时候进行检测
+    }
+
+    compileSdkVersion 27
+    //编译sdk的版本，也就是API Level，例如API-19、API-20、API-21等等。
+//    buildToolsVersion '27.0.3'
+    //build tools的版本，其中包括了打包工具aapt、dx等等。
+    //这个工具的目录位于你的sdk目录/build-tools/下
+
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    //关闭Android Studio的PNG合法性检查的
+
+    defaultConfig {
+        applicationId "yuefeng.com.wisdomfirecontrol"
+        minSdkVersion 17
+        targetSdkVersion 24
+        versionCode 17
+        versionName "1.1.7"
+
+        multiDexEnabled true
+        //当方法数超过65535(方法的索引使用的是一个short值，
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi"
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+
+    //默认的一些文件路径的配置
+    sourceSets {
+        main {
+            assets.srcDirs = ['assets']    //资源文件
+            jni.srcDirs 'src/main/jni'     //jni文件
+            jniLibs.srcDir 'src/main/jniLibs' //jni库
+        }
+    }
+
+    //multiDex的一些相关配置，这样配置可以让你的编译速度更快
+    dexOptions {
+        preDexLibraries = false
+        //让它不要对Lib做preDexing
+        incremental true
+        //开启incremental dexing,优化编译效率，这个功能android studio默认是关闭的。
+        javaMaxHeapSize "4g"     //增加java堆内存大小
+    }
+
+    buildTypes {
+        release { //release版本的配置
+            minifyEnabled false    //是否进行混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //release的Proguard默认为Module下的proguard-rules.pro文件.
+        }
+
+        debug {//debug版本的配置
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false // 移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //采用动态替换字符串的方式生成不同的release.apk
+//    applicationVariants.all { variant ->
+//        variant.outputs.all { output ->
+//            def outputFile = output.outputFile
+//            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                // 输出apk名称为ForWatch_v1.1(2)_2016-09-28_15-54-35.apk
+//                def version = "v${versionName}-${versionCode}"
+//                def endIndex = outputFile.name.indexOf('.apk')
+//                def apkName = outputFile.name.substring(0, endIndex);
+//                def fileName = "${apkName}_${version}_${buildTime()}_${revision()}.apk"
+//                //output.outputFile = new File(outputFile.parent, fileName)
+//                outputFileName = fileName
+//            }
+//        }
+//    }
+
+
+    sourceSets {main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible,GradleCompatible
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.2'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:multidex:1.0.3'//分包
+//  retrofit
+//    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+//    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    //腾讯x5
+    implementation files('libs/tbs_sdk_thirdapp_v3.5.0.1004_43500_sharewithdownload_withoutGame_obfs_20170801_113025.jar')
+    //图片
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.0'
+    //下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
+
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+//    轮播图
+    implementation 'com.youth.banner:banner:1.4.10'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.melnykov:floatingactionbutton:1.3.0'
+
+//    视频压缩
+    //视频压缩
+    implementation files('libs/aspectjrt-1.7.3.jar')
+    implementation files('libs/isoparser-1.0.6.jar')
+    /*百度地图*/
+    implementation files('libs/BaiduLBS_Android.jar')
+
+    implementation project(':citypickerview')
+
+    //短信
+    implementation files('libs/MobCommons-2017.0321.1624.jar')
+    implementation files('libs/MobTools-2017.0321.1624.jar')
+    implementation files('libs/SMSSDK-2.1.4.jar')
+
+    /*二维码*/
+    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+//    柱形图
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //retrofit配套使用
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+    implementation 'com.lzy.net:okhttputils:1.8.1'
+//    implementation 'com.github.bumptech.glide:glide:4.5.0'
+    implementation 'com.bm.photoview:library:1.4.1'
+    //下载
+    compile 'com.liulishuo.filedownloader:library:1.6.8'
+
+    //    科大讯飞语音
+    compile files('libs/Msc.jar')
+    //flyco
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+}

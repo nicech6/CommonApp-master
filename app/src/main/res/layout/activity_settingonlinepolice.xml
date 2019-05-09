@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        tools:ignore="ScrollViewSize">
+
+        <include layout="@layout/title_bar"/>
+
+        <TextView
+            android:id="@+id/tv_callpolice_equipmen"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_dp_40"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:textSize="@dimen/txt_size_15"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/img_jingbao"/>
+
+        <TextView
+            android:id="@+id/tv_callpolice_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_dp_40"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:textSize="@dimen/txt_size_15"/>
+
+        <View style="@style/horizontal_gray_10"/>
+
+        <TextView
+            android:id="@+id/tv_install_address"
+            style="@style/settinginfos_tv_13sp"/>
+
+        <TextView
+            android:id="@+id/tv_setting_type"
+            style="@style/settinginfos_tv_13sp"/>
+
+        <TextView
+            android:id="@+id/tv_setting_num"
+            style="@style/settinginfos_tv_13sp"/>
+
+        <TextView
+            android:id="@+id/tv_install_time"
+            style="@style/settinginfos_tv_13sp"/>
+
+
+        <TextView
+            android:id="@+id/tv_setting_area"
+            style="@style/settinginfos_tv_13sp"/>
+
+        <TextView
+            android:id="@+id/tv_area_personal"
+            style="@style/settinginfos_tv_13sp"/>
+
+        <TextView
+            android:id="@+id/tv_setting_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/txt_dp_40"
+            android:layout_marginStart="@dimen/txt_dp_40"
+            android:gravity="center_vertical"
+            android:textColor="@color/item_text_01"
+            android:textSize="@dimen/txt_size_13"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.baidu.mapapi.map.TextureMapView
+                android:id="@+id/mapview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/txt_dp_15"/>
+
+        </RelativeLayout>
+
+        <View style="@style/horizontal_gray_10"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_24"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/shape_label_red"
+            android:drawablePadding="@dimen/txt_dp_3"
+            android:gravity="center"
+            android:text="电流值"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_12"
+            tools:ignore="HardcodedText,RtlHardcoded"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart_e"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginEnd="@dimen/txt_dp_5"
+            android:layout_marginStart="@dimen/txt_dp_2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_dp_20"
+            android:layout_marginEnd="@dimen/txt_dp_20"
+            android:layout_marginStart="@dimen/txt_dp_32"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="A相电流（A）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="B相电流（A）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="C相电流（A）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="漏电流（A）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/dinaya"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_24"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/txt_dp_10"
+            android:drawableLeft="@drawable/shape_label_red"
+            android:drawablePadding="@dimen/txt_dp_3"
+            android:gravity="center"
+            android:text="电压值"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_12"
+            tools:ignore="HardcodedText,RtlHardcoded"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart_v"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginEnd="@dimen/txt_dp_5"
+            android:layout_marginStart="@dimen/txt_dp_2"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_dp_20"
+            android:layout_marginEnd="@dimen/txt_dp_20"
+            android:layout_marginStart="@dimen/txt_dp_32"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="A相电压（V）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="B相电压（V）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="C相电压（V）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_dp_24"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/txt_dp_10"
+            android:drawableLeft="@drawable/shape_label_red"
+            android:drawablePadding="@dimen/txt_dp_3"
+            android:gravity="center"
+            android:text="温度值"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_size_12"
+            tools:ignore="HardcodedText,RtlHardcoded"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart_temp"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginEnd="@dimen/txt_dp_5"
+            android:layout_marginStart="@dimen/txt_dp_2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_dp_20"
+            android:layout_marginBottom="@dimen/txt_dp_10"
+            android:layout_marginEnd="@dimen/txt_dp_20"
+            android:layout_marginStart="@dimen/txt_dp_32"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="1路温度（°C）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="2路温度（°C）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="3路温度（°C）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="4路温度（°C）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_size_9"/>
+
+        </LinearLayout>
+
+        <View style="@style/horizontal_gray_10"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_dp_40"
+            android:layout_marginTop="@dimen/txt_dp_10"
+            android:layout_marginBottom="@dimen/txt_dp_15"
+            android:background="@color/transparent"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/transparent"/>
+
+            <TextView
+                android:id="@+id/tv_next"
+                android:layout_width="@dimen/txt_dp_155"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_red_bg_all_hand"
+                android:gravity="center"
+                android:text="稍后处理"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_14"
+                tools:ignore="HardcodedText"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/transparent"/>
+
+            <TextView
+                android:id="@+id/tv_now"
+                android:layout_width="@dimen/txt_dp_155"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_red_bg_all"
+                android:gravity="center"
+                android:text="现在确认"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_14"
+                tools:ignore="HardcodedText"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
