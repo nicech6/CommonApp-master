@@ -157,26 +157,47 @@ public class SettingPoliceOnlineFragment extends BaseFragment implements Setting
     }
 
     private void showNetDatas(List<GetSenorcountDataBean> data) {
-        Collections.sort(data,new Comparator<GetSenorcountDataBean>(){
+        List<Fragment> fragments = new ArrayList<>();
+        Collections.sort(data, new Comparator<GetSenorcountDataBean>() {
             public int compare(GetSenorcountDataBean arg0, GetSenorcountDataBean arg1) {
-                return arg0.getNum().compareTo(arg1.getNum());
+                return arg1.getNum().compareTo(arg0.getNum());
             }
         });
-        for (GetSenorcountDataBean datum : data) {
-            String typename = datum.getTypename();
-            int datumNum = datum.getNum();
+//        for (GetSenorcountDataBean datum : data) {
+//            String typename = datum.getTypename();
+//            int datumNum = datum.getNum();
+//            if (typename.equals("全部")) {
+//                list.set(0, "全部（" + String.valueOf(datumNum) + "）");
+//            } else if (typename.equals("烟感器")) {
+//                list.set(2, "烟感器（" + String.valueOf(datumNum) + "）");
+//            } else if (typename.equals("气感")) {
+//                list.set(3, "气感（" + String.valueOf(datumNum) + "）");
+//            } else if (typename.equals("消防栓")) {
+//                list.set(4, "消防栓（" + String.valueOf(datumNum) + "）");
+//            } else if (typename.equals("灭火器")) {
+//                list.set(5, "灭火器（" + String.valueOf(datumNum) + "）");
+//            } else {
+//                list.set(1, "电气火灾（" + String.valueOf(datumNum) + "）");
+////            } else if (typename.equals("电气火灾")) {
+////                list.set(1, "烟感（" + String.valueOf(datumNum) + "）");
+//            }
+//        }
+        for (int i = 0; i < 6; i++) {
+            list.set(i, data.get(i).getTypename() + "(" + data.get(i).getNum() + ")");
+            String typename = data.get(i).getTypename();
             if (typename.equals("全部")) {
-                list.set(0, "全部（" + String.valueOf(datumNum) + "）");
+                fragments.add(new AllSettingPoliceTrubleFragment());
             } else if (typename.equals("烟感器")) {
-                list.set(2, "烟感器（" + String.valueOf(datumNum) + "）");
-            } else if (typename.equals("气感")) {
-                list.set(3, "气感（" + String.valueOf(datumNum) + "）");
+                fragments.add(new SmokeDetectorFragment());
+            } else if (typename.equals("气感器")) {
+                fragments.add(new GasSensorFragment());
             } else if (typename.equals("消防栓")) {
-                list.set(4, "消防栓（" + String.valueOf(datumNum) + "）");
+                fragments.add(new FireHydrantFragment());
             } else if (typename.equals("灭火器")) {
-                list.set(5, "灭火器（" + String.valueOf(datumNum) + "）");
-            } else {
-                list.set(1, "电气火灾（" + String.valueOf(datumNum) + "）");
+                fragments.add(new OffFireSensorFragment());
+            } else if (typename.equals("电气火灾")){
+                fragments.add(new ElectricCableFragment());
+
 //            } else if (typename.equals("电气火灾")) {
 //                list.set(1, "烟感（" + String.valueOf(datumNum) + "）");
             }
@@ -184,13 +205,6 @@ public class SettingPoliceOnlineFragment extends BaseFragment implements Setting
 
         titles = list.toArray(new String[list.size()]);
         initViewPager(titles);
-        List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new AllSettingPoliceTrubleFragment());
-        fragments.add(new ElectricCableFragment());
-        fragments.add(new SmokeDetectorFragment());
-        fragments.add(new GasSensorFragment());
-        fragments.add(new FireHydrantFragment());
-        fragments.add(new OffFireSensorFragment());
 
         viewPager.setAdapter(new IndicatorFragmentAdapter(
                 getChildFragmentManager(), fragments, titles));
@@ -216,3 +230,4 @@ public class SettingPoliceOnlineFragment extends BaseFragment implements Setting
         return false;
     }
 }
+
