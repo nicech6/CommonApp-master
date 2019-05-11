@@ -76,7 +76,7 @@ public class SplashActivity extends com.mvp_0726.common.base.codereview.BaseActi
             return;
         }
 
-        if (false) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             isHasLocationPermission();
         } else {
             isFristLogin();
