@@ -15,8 +15,8 @@
     <RelativeLayout
         android:id="@+id/rl_head"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/qyjg_bg">
+        android:layout_height="210dp"
+        android:background="@drawable/main_bg">
 
         <TextView
             android:id="@+id/tv_app_company"
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_app_company"
-            android:layout_marginTop="@dimen/txt_dp_45"
+            android:layout_marginTop="45dp"
             android:background="@color/transition" />
 
 
