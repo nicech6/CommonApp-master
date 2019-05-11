@@ -110,26 +110,75 @@ public class SplashActivity extends com.mvp_0726.common.base.codereview.BaseActi
     }
 
     private void isHasLocationPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED) {
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                == PackageManager.PERMISSION_GRANTED) {
+//            isFristLogin();
+//        } else {//申请权限
+//            ActivityCompat.requestPermissions(this,
+//                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
+//        }
+//
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//                == PackageManager.PERMISSION_GRANTED) {
+//            isFristLogin();
+//        } else {//申请权限
+//            ActivityCompat.requestPermissions(this,
+//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
+//        }
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+//                == PackageManager.PERMISSION_GRANTED) {
+//            isFristLogin();
+//        } else {//申请权限
+//            ActivityCompat.requestPermissions(this,
+//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 3);
+//        }
+        check();
+
+    }
+
+    /**
+     * 检查是否拥有指定的所有权限
+     */
+    private boolean checkPermissionAllGranted(String[] permissions) {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                // 只要有一个权限没有被授予, 则直接返回 false
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void check() {
+        /**
+         * 第 1 步: 检查是否有相应的权限
+         */
+        boolean isAllGranted = checkPermissionAllGranted(
+                new String[]{
+                        Manifest.permission.READ_CONTACTS,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }
+        );
+        // 如果这3个权限全都拥有, 则直接执行备份代码
+        if (isAllGranted) {
             isFristLogin();
-        } else {//申请权限
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
+            return;
         }
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-        } else {//申请权限
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
-        }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED) {
-        } else {//申请权限
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 3);
-        }
+        /**
+         * 第 2 步: 请求权限
+         */
+        // 一次请求多个权限, 如果其他有权限是已经授予的将会自动忽略掉
+        ActivityCompat.requestPermissions(
+                this,
+                new String[]{
+                        Manifest.permission.READ_CONTACTS,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                },
+                MY_PERMISSION_REQUEST_CODE
+        );
     }
 
     @Override
@@ -140,47 +189,90 @@ public class SplashActivity extends com.mvp_0726.common.base.codereview.BaseActi
         }
     }
 
+    private static final int MY_PERMISSION_REQUEST_CODE = 10000;
 
     //权限请求结果
+    boolean isAllGranted;
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         final SuccessDialog successDialog = new SuccessDialog(SplashActivity.this);
-        switch (requestCode) {
-            case 3:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    isFristLogin();
-                } else {
-                    successDialog.setContent("暂无读写SD卡权限\n是否前往设置？");
-                    successDialog.setDialogCallback(new SuccessDialog.Dialogcallback() {
-                        @Override
-                        public void dialogdo(LinearLayout container) {
-                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            intent.setData(Uri.parse("package:" + getPackageName())); // 根据包名打开对应的设置界面
-                            startActivityForResult(intent, 10085);
-                        }
+        if (requestCode == MY_PERMISSION_REQUEST_CODE) {
+            boolean isAllGranted = true;
 
-                        @Override
-                        public void dialogcancle() {
-                            if (!isFinishing()) {
-                                successDialog.dismiss();
-                            }
-                        }
-                    });
+            // 判断是否所有的权限都已经授予了
+            for (int grant : grantResults) {
+                if (grant != PackageManager.PERMISSION_GRANTED) {
+                    isAllGranted = false;
+                    break;
+                }
+            }
 
-                    if (!isFinishing()) {
-                        successDialog.show();
+            if (isAllGranted) {
+                // 如果所有的权限都授予了, 则执行备份代码
+                isFristLogin();
+
+            } else {
+                // 弹出对话框告诉用户需要权限的原因, 并引导用户去应用权限管理中手动打开权限按钮
+                successDialog.setContent("暂无读写SD卡权限\n是否前往设置？");
+                successDialog.setDialogCallback(new SuccessDialog.Dialogcallback() {
+                    @Override
+                    public void dialogdo(LinearLayout container) {
+                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        intent.setData(Uri.parse("package:" + getPackageName())); // 根据包名打开对应的设置界面
+                        startActivityForResult(intent, 10085);
                     }
-                }
-                break;
-            case 2:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                } else {
-                    Global.showToast("请前往权限管理设置");
+                    @Override
+                    public void dialogcancle() {
+                        if (!isFinishing()) {
+                            successDialog.dismiss();
+                        }
+                    }
+                });
+
+                if (!isFinishing()) {
+                    successDialog.show();
                 }
-                break;
+            }
         }
+
+//        switch (requestCode) {
+//            case 3:
+//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    isFristLogin();
+//                } else {
+//                    successDialog.setContent("暂无读写SD卡权限\n是否前往设置？");
+//                    successDialog.setDialogCallback(new SuccessDialog.Dialogcallback() {
+//                        @Override
+//                        public void dialogdo(LinearLayout container) {
+//                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+//                            intent.setData(Uri.parse("package:" + getPackageName())); // 根据包名打开对应的设置界面
+//                            startActivityForResult(intent, 10085);
+//                        }
+//
+//                        @Override
+//                        public void dialogcancle() {
+//                            if (!isFinishing()) {
+//                                successDialog.dismiss();
+//                            }
+//                        }
+//                    });
+//
+//                    if (!isFinishing()) {
+//                        successDialog.show();
+//                    }
+//                }
+//                break;
+//            case 2:
+//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    isFristLogin();
+//                } else {
+//                    Global.showToast("请前往权限管理设置");
+//                }
+//                break;
+//        }
 
     }
 
