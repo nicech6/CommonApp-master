@@ -17,7 +17,7 @@ android {
         yueyunbusiness {
             keyAlias 'key'
             keyPassword 'yuefeng123456789'
-            storeFile file('/Users/CH/Desktop/yueyunbusiness.jks')
+            storeFile file('E:/outwork/CommonApp-master/yueyunbusiness.jks')
             storePassword 'yuefeng123456789'
         }
     }

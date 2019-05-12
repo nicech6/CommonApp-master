@@ -163,6 +163,13 @@ public class SettingPoliceOnlineFragment extends BaseFragment implements Setting
                 return arg1.getNum().compareTo(arg0.getNum());
             }
         });
+        for (int i = 0; i < data.size(); i++) {
+            if ("全部".equals(data.get(i).getTypename())){
+                list.set(0, data.get(i).getTypename() + "(" + data.get(i).getNum() + ")");
+                data.remove(i);
+            }
+        }
+        fragments.add(new AllSettingPoliceTrubleFragment());
 //        for (GetSenorcountDataBean datum : data) {
 //            String typename = datum.getTypename();
 //            int datumNum = datum.getNum();
@@ -182,11 +189,12 @@ public class SettingPoliceOnlineFragment extends BaseFragment implements Setting
 ////                list.set(1, "烟感（" + String.valueOf(datumNum) + "）");
 //            }
 //        }
-        for (int i = 0; i < 6; i++) {
+        for (int i = 1; i < 6; i++) {
             list.set(i, data.get(i).getTypename() + "(" + data.get(i).getNum() + ")");
             String typename = data.get(i).getTypename();
             if (typename.equals("全部")) {
-                fragments.add(new AllSettingPoliceTrubleFragment());
+
+//                fragments.add(new AllSettingPoliceTrubleFragment());
             } else if (typename.equals("烟感器")) {
                 fragments.add(new SmokeDetectorFragment());
             } else if (typename.equals("气感器")) {

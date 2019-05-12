@@ -172,7 +172,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         mCountAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                if (mCompanyType.equals("企业监管")) {
+                if (true) {
                     whatActivity(position);
                 } else {
                     showSuccessToast("正在开发...");
