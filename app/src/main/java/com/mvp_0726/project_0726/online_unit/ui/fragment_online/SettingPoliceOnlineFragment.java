@@ -189,8 +189,8 @@ public class SettingPoliceOnlineFragment extends BaseFragment implements Setting
 ////                list.set(1, "烟感（" + String.valueOf(datumNum) + "）");
 //            }
 //        }
-        for (int i = 1; i < 6; i++) {
-            list.set(i, data.get(i).getTypename() + "(" + data.get(i).getNum() + ")");
+        for (int i = 0; i < 5; i++) {
+            list.set(i+1, data.get(i).getTypename() + "(" + data.get(i).getNum() + ")");
             String typename = data.get(i).getTypename();
             if (typename.equals("全部")) {
 

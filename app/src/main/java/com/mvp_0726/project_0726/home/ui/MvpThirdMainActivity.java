@@ -111,6 +111,9 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
     private String mCompanyType;
     private String mRightNo;
     private String mId;
+    private TextView mTv1;
+    private TextView mTv2;
+    private TextView mTv3;
 
 
     @Override
@@ -126,6 +129,10 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         presenter = new HomeThirdPresenter(this, this);
 //        tv_title.setText(R.string.jiuan_xiaofng);
         iv_back.setVisibility(View.INVISIBLE);
+
+        mTv1 = (TextView) findViewById(R.id.tv_1);
+        mTv2 = (TextView) findViewById(R.id.tv_2);
+        mTv3 = (TextView) findViewById(R.id.tv_3);
 
         tv_app_company = findViewById(R.id.tv_app_company);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "songti.ttf");
@@ -303,6 +310,9 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
     @Override
     protected void setLisenter() {
         tv_app_company.setOnClickListener(this);
+        mTv1.setOnClickListener(this);
+        mTv2.setOnClickListener(this);
+        mTv3.setOnClickListener(this);
     }
 
     @Override
@@ -313,6 +323,40 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                     showCompanyInfos(true, dataBean);
                 } else {
                     showSuccessToast("数据加载中，请稍等片刻");
+                }
+                break;
+
+            case R.id.tv_1:
+                if (mCompanyType.equals("企业监管")) {
+                    whatActivity(0);
+                } else {
+                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
+                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
+                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
+                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                }
+                break;
+            case R.id.tv_2:
+                if (mCompanyType.equals("企业监管")) {
+                    whatActivity(2);
+                } else {
+                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
+                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
+                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
+                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                }
+                break;
+            case R.id.tv_3:
+                if (mCompanyType.equals("企业监管")) {
+                    whatActivity(1);
+                } else {
+                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
+                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
+                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
+                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
+                    MvpThirdMainActivity.this.startActivity(intent);
                 }
                 break;
         }
@@ -403,14 +447,19 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
     }
 
     private void initDataBaojin(String sensorcount, String dataBaojingcount, String guzhangcount) {
-        countList.clear();
-        countList.add(new SettingCountBean(mLianStr, sensorcount));
-        countList.add(new SettingCountBean(mBaoStr, dataBaojingcount));
-        countList.add(new SettingCountBean(mGuStr, guzhangcount));
+//        countList.clear();
+//        countList.add(new SettingCountBean(mLianStr, sensorcount));
+//        countList.add(new SettingCountBean(mBaoStr, dataBaojingcount));
+//        countList.add(new SettingCountBean(mGuStr, guzhangcount));
+//
+//        if (mCountAdapter != null) {
+//            mCountAdapter.setNewData(countList);
+//        }
 
-        if (mCountAdapter != null) {
-            mCountAdapter.setNewData(countList);
-        }
+        mTv1.setText(mLianStr + "    " + sensorcount);
+        mTv2.setText(mGuStr + "    " + guzhangcount);
+        mTv3.setText(mBaoStr + "    " + dataBaojingcount);
+
     }
 
     /*公司信息*/

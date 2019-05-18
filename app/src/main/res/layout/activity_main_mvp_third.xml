@@ -24,9 +24,9 @@
             android:layout_height="@dimen/txt_dp_45"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/txt_dp_22"
-            android:paddingRight="20dp"
             android:background="@color/transition"
             android:gravity="right|center_vertical"
+            android:paddingRight="20dp"
             android:text="3333"
             android:textColor="@color/white"
             android:textSize="@dimen/txt_size_18"
@@ -38,11 +38,60 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_app_company"
             android:layout_marginTop="45dp"
-            android:background="@color/transition" />
+            android:background="@color/transition"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="60dp"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:shadowColor="#49619b"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:text="联网设备"
+            android:textColor="#5f6ed3"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_1"
+            android:layout_marginLeft="25dp"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:shadowColor="#716f6a"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:text="故障设备"
+            android:textColor="#e2e962"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_2"
+            android:layout_marginLeft="25dp"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:shadowColor="#9c3e52"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:text="报警设备"
+            android:textColor="#d53130"
+            android:textSize="17sp" />
 
 
     </RelativeLayout>
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"

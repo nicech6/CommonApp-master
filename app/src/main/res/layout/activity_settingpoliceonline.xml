@@ -43,9 +43,8 @@
 
                 <TextView
                     android:id="@+id/tv_rv_item_num_1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:minWidth="20dp"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/shape_label_orange"
                     android:gravity="center"
@@ -62,9 +61,8 @@
                     android:layout_centerInParent="true"
                     android:background="@color/transparent"
                     android:gravity="center"
-                    android:paddingStart="@dimen/txt_dp_2"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/txt_size_15"
+                    android:textSize="@dimen/txt_size_14"
                     tools:ignore="NestedWeights,RtlSymmetry"/>
 
 
@@ -97,9 +95,8 @@
 
                 <TextView
                     android:id="@+id/tv_rv_item_num_2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:minWidth="20dp"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/shape_label_orange"
                     android:gravity="center"
@@ -116,9 +113,8 @@
                     android:layout_centerInParent="true"
                     android:background="@color/transparent"
                     android:gravity="center"
-                    android:paddingStart="@dimen/txt_dp_2"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/txt_size_15"
+                    android:textSize="@dimen/txt_size_14"
                     tools:ignore="NestedWeights,NotSibling,RtlSymmetry"/>
 
 
@@ -154,12 +150,11 @@
 
                 <TextView
                     android:id="@+id/tv_rv_item_num_3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/shape_label_orange"
                     android:gravity="center"
-                    android:minWidth="20dp"
                     android:textColor="@color/white"
                     android:textSize="@dimen/txt_size_12"
                     android:visibility="visible"
@@ -173,9 +168,8 @@
                     android:layout_centerInParent="true"
                     android:background="@color/transparent"
                     android:gravity="center"
-                    android:paddingStart="@dimen/txt_dp_2"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/txt_size_15"
+                    android:textSize="@dimen/txt_size_14"
                     tools:ignore="HardcodedText,NestedWeights,RtlSymmetry"/>
 
             </RelativeLayout>
