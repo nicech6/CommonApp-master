@@ -39,7 +39,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class SettingPoliceOnlineActivity extends BaseActivity implements SettingOnlinePoliceContract.View {
 
-
     private DrawableCenterTextView tv_item_name_1, tv_item_name_2, tv_item_name_3;
     private TextView tv_rv_item_num_1, tv_rv_item_num_2, tv_rv_item_num_3, tv_company_name;
     private GradientDrawable myGrad1, myGrad2, myGrad3;
