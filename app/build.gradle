@@ -84,7 +84,7 @@ android {
     dexOptions {
         preDexLibraries = false
         //让它不要对Lib做preDexing
-        incremental true
+//        incremental true
         //开启incremental dexing,优化编译效率，这个功能android studio默认是关闭的。
         javaMaxHeapSize "4g"     //增加java堆内存大小
     }
