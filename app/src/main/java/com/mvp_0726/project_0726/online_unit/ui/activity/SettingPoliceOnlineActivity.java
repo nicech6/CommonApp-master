@@ -44,7 +44,6 @@ public class SettingPoliceOnlineActivity extends BaseActivity implements Setting
     private GradientDrawable myGrad1, myGrad2, myGrad3;
     private static final String TAG = "tag";
     private LinearLayout ll_item_tab_1, ll_item_tab_2, ll_item_tab_3;
-
     private FrameLayout framelayout;
     private FragmentManager mFragmentManager;
     private FragmentTransaction fragmentTransaction;
