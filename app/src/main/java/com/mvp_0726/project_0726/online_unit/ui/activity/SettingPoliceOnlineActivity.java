@@ -51,6 +51,7 @@ public class SettingPoliceOnlineActivity extends BaseActivity implements Setting
     public static String state = "";
     private String pid;
     private SettingOnlinePolicePresenter presenter;
+    private boolean mIsDanwei;
 
     @Override
     protected int getContentViewResId() {
@@ -102,9 +103,10 @@ public class SettingPoliceOnlineActivity extends BaseActivity implements Setting
 
         tv_company_name = findViewById(R.id.tv_company_name);
 
-        showTxt();
         Intent intent = getIntent();
         String stringExtra = intent.getStringExtra("INTENT_KEY");
+        mIsDanwei = intent.getBooleanExtra("isDanwei", false);
+        showTxt();
         if (TextUtils.isEmpty(stringExtra)) {
             return;
         }
@@ -122,21 +124,33 @@ public class SettingPoliceOnlineActivity extends BaseActivity implements Setting
         //replace：移除之前所有的碎片，替换新的碎片（remove和add的集合体）(很少用，不推荐，因为是重新加载，所以消耗流量)
         //参数：1.公共父容器的的id  2.fragment的碎片
         if (stringExtra.equals(Const.GO_SETTINGONLINE_FIRST)) {
-            tv_title.setText("联网设备");
+            if (mIsDanwei) {
+                tv_title.setText("联网单位");
+            } else {
+                tv_title.setText("联网设备");
+            }
 //            fragmentTransaction.add(R.id.framelayout, new OnlineSettingFragment());
             ll_item_tab_1.setBackgroundColor(getResources().getColor(R.color.list_divider));
             ll_item_tab_2.setBackgroundColor(getResources().getColor(R.color.white));
             ll_item_tab_3.setBackgroundColor(getResources().getColor(R.color.white));
             state = "";
         } else if (stringExtra.equals(Const.GO_SETTINGONLINE_SECOND)) {
-            tv_title.setText("报警设备");
+            if (mIsDanwei) {
+                tv_title.setText("报警单位");
+            } else {
+                tv_title.setText("报警设备");
+            }
 //            fragmentTransaction.add(R.id.framelayout, new PoliceSettingFragment());
             ll_item_tab_2.setBackgroundColor(getResources().getColor(R.color.list_divider));
             ll_item_tab_1.setBackgroundColor(getResources().getColor(R.color.white));
             ll_item_tab_3.setBackgroundColor(getResources().getColor(R.color.white));
             state = "2";
         } else {
-            tv_title.setText("故障设备");
+            if (mIsDanwei) {
+                tv_title.setText("故障单位");
+            } else {
+                tv_title.setText("故障设备");
+            }
             ll_item_tab_3.setBackgroundColor(getResources().getColor(R.color.list_divider));
             ll_item_tab_2.setBackgroundColor(getResources().getColor(R.color.white));
             ll_item_tab_1.setBackgroundColor(getResources().getColor(R.color.white));
@@ -151,9 +165,15 @@ public class SettingPoliceOnlineActivity extends BaseActivity implements Setting
     }
 
     private void showTxt() {
-        tv_item_name_1.setText(getResources().getString(R.string.netdevice_url));
-        tv_item_name_2.setText(getResources().getString(R.string.firealarm_url));
-        tv_item_name_3.setText(getResources().getString(R.string.deviceorder_url));
+        if (mIsDanwei){
+            tv_item_name_1.setText("联网单位");
+            tv_item_name_2.setText("报警单位");
+            tv_item_name_3.setText("故障单位");
+        }else {
+            tv_item_name_1.setText(getResources().getString(R.string.netdevice_url));
+            tv_item_name_2.setText(getResources().getString(R.string.firealarm_url));
+            tv_item_name_3.setText(getResources().getString(R.string.deviceorder_url));
+        }
         tv_item_name_1.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.icon_lwsb1), null, null, null);
         tv_item_name_2.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.icon_bj), null, null, null);
         tv_item_name_3.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.icon_gzsb), null, null, null);

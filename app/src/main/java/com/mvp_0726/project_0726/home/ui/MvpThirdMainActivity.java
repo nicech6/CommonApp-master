@@ -201,6 +201,9 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
         intent.setClass(MvpThirdMainActivity.this, SettingPoliceOnlineActivity.class);
         intent.putExtra("INTENT_KEY", type);
+        if (!mCompanyType.equals("企业监管")) {
+            intent.putExtra("isDanwei", true);
+        }
         super.startActivity(intent);
     }
 
@@ -234,9 +237,10 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
         if (presenter != null) {
 //            ApiRetrofit.changeApiBaseUrl(NetworkUrl.ANDROID_BAIDU_SERVICE);
-            if (mCompanyType.equals("企业监管")) {
-                presenter.getEquipmentCount(pid);
-            }
+//            if (mCompanyType.equals("企业监管")) {
+//                presenter.getEquipmentCount(pid);
+//            }
+            presenter.getEquipmentCount(pid);
             presenter.getAppNum(pid, mId);
             new Thread(new Runnable() {
                 @Override
@@ -327,37 +331,40 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 break;
 
             case R.id.tv_1:
-                if (mCompanyType.equals("企业监管")) {
-                    whatActivity(0);
-                } else {
-                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
-                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
-                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
-                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
-                    MvpThirdMainActivity.this.startActivity(intent);
-                }
+//                if (mCompanyType.equals("企业监管")) {
+//                    whatActivity(0);
+//                } else {
+//                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
+//                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
+//                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
+//                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
+//                    MvpThirdMainActivity.this.startActivity(intent);
+//                }
+                whatActivity(0);
                 break;
             case R.id.tv_2:
-                if (mCompanyType.equals("企业监管")) {
-                    whatActivity(2);
-                } else {
-                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
-                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
-                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
-                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
-                    MvpThirdMainActivity.this.startActivity(intent);
-                }
+//                if (mCompanyType.equals("企业监管")) {
+//                    whatActivity(2);
+//                } else {
+//                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
+//                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
+//                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
+//                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
+//                    MvpThirdMainActivity.this.startActivity(intent);
+//                }
+                whatActivity(2);
                 break;
             case R.id.tv_3:
-                if (mCompanyType.equals("企业监管")) {
-                    whatActivity(1);
-                } else {
-                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
-                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
-                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
-                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
-                    MvpThirdMainActivity.this.startActivity(intent);
-                }
+//                if (mCompanyType.equals("企业监管")) {
+//                    whatActivity(1);
+//                } else {
+//                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
+//                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
+//                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
+//                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
+//                    MvpThirdMainActivity.this.startActivity(intent);
+//                }
+                whatActivity(1);
                 break;
         }
 
