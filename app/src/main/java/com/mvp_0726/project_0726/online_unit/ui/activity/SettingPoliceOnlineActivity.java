@@ -47,7 +47,6 @@ public class SettingPoliceOnlineActivity extends BaseActivity implements Setting
     private LinearLayout ll_item_tab_1, ll_item_tab_2, ll_item_tab_3;
 
     private FrameLayout framelayout;
-
     private FragmentManager mFragmentManager;
     private FragmentTransaction fragmentTransaction;
 
