@@ -40,6 +40,7 @@ import com.mvp_0726.project_0726.home.contract.HomeContract;
 import com.mvp_0726.project_0726.home.model.MarqueeDataBean;
 import com.mvp_0726.project_0726.home.model.OrgandetailDataBean;
 import com.mvp_0726.project_0726.home.presenter.HomePresenter;
+import com.mvp_0726.project_0726.login.modle.DanWeiBean;
 import com.mvp_0726.project_0726.online_unit.ui.activity.SettingPoliceOnlineActivity;
 import com.mvp_0726.project_0726.utils.StringUtils;
 import com.mvp_0726.project_0726.utils.XunFeiUtils;
@@ -456,6 +457,7 @@ public class MvpMainActivity extends BaseActivity implements HomeContract.View {
                 marqueeList = (List<MarqueeDataBean>) ecEvent.getData();
                 initMarqueeView(marqueeList);
                 break;
+
         }
     }
 
@@ -736,4 +738,5 @@ public class MvpMainActivity extends BaseActivity implements HomeContract.View {
             mXunFeiUtils.stopSpeak();
         }
     }
+
 }

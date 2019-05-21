@@ -143,6 +143,10 @@ public class WebStringUtils {
         } else if (name.equals(Constant.SECURITY_FIL)) {
             list.add("我的档案");
             list.add("审核档案");
+        } else if (name.equals(Constant.DANWWEI)) {
+            list.add("联网单位");
+            list.add("报警单位");
+            list.add("故障单位");
         }
 
         return list;

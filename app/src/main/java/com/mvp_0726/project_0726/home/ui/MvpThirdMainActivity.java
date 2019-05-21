@@ -16,6 +16,7 @@ import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +26,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.mvp_0726.common.base.codereview.BaseActivity;
 import com.mvp_0726.common.event.CommonEvent;
 import com.mvp_0726.common.event.NetWorkChangeEvent;
+import com.mvp_0726.common.network.HttpObservable;
+import com.mvp_0726.common.network.HttpResultObserver;
 import com.mvp_0726.common.utils.Constans;
 import com.mvp_0726.common.utils.Global;
 import com.mvp_0726.common.utils.LogUtils;
@@ -39,6 +42,7 @@ import com.mvp_0726.project_0726.home.model.MarqueeDataBean;
 import com.mvp_0726.project_0726.home.model.OrgandetailDataBean;
 import com.mvp_0726.project_0726.home.model.SettingCountBean;
 import com.mvp_0726.project_0726.home.presenter.HomeThirdPresenter;
+import com.mvp_0726.project_0726.login.modle.DanWeiBean;
 import com.mvp_0726.project_0726.online_unit.ui.activity.SettingPoliceOnlineActivity;
 import com.mvp_0726.project_0726.ui.setting.NewSettingManagerActivity;
 import com.mvp_0726.project_0726.utils.StringUtils;
@@ -49,6 +53,7 @@ import com.project.wisdomfirecontrol.common.base.Const;
 import com.project.wisdomfirecontrol.common.util.LogUtil;
 import com.project.wisdomfirecontrol.common.util.SharedPreUtil;
 import com.project.wisdomfirecontrol.firecontrol.download.UpdateManager;
+import com.project.wisdomfirecontrol.firecontrol.model.bean.login.LoginChangeBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.LoginChangeDataBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.MenuDatasBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.MenuDatasBeanX;
@@ -65,6 +70,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.disposables.Disposable;
 
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
@@ -153,12 +160,12 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
             mLianStr = "联网单位";
             mBaoStr = "报警单位";
             mGuStr = "故障单位";
-            initDataBaojin("0", "0", "0");
-
+//            initDataBaojin("0", "0", "0");
         }
         initRecycleView();
         checkVersion();
     }
+
 
     //    检查版本更新
     private boolean HasCheckUpdate = false;
@@ -201,9 +208,6 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
         intent.setClass(MvpThirdMainActivity.this, SettingPoliceOnlineActivity.class);
         intent.putExtra("INTENT_KEY", type);
-        if (!mCompanyType.equals("企业监管")) {
-            intent.putExtra("isDanwei", true);
-        }
         super.startActivity(intent);
     }
 
@@ -237,10 +241,11 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
         if (presenter != null) {
 //            ApiRetrofit.changeApiBaseUrl(NetworkUrl.ANDROID_BAIDU_SERVICE);
-//            if (mCompanyType.equals("企业监管")) {
-//                presenter.getEquipmentCount(pid);
-//            }
-            presenter.getEquipmentCount(pid);
+            if (mCompanyType.equals("企业监管")) {
+                presenter.getEquipmentCount(pid);
+            } else {
+                presenter.getdanweiNum(pid);
+            }
             presenter.getAppNum(pid, mId);
             new Thread(new Runnable() {
                 @Override
@@ -331,40 +336,37 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 break;
 
             case R.id.tv_1:
-//                if (mCompanyType.equals("企业监管")) {
-//                    whatActivity(0);
-//                } else {
-//                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
-//                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
-//                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
-//                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
-//                    MvpThirdMainActivity.this.startActivity(intent);
-//                }
-                whatActivity(0);
+                if (mCompanyType.equals("企业监管")) {
+                    whatActivity(0);
+                } else {
+                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
+                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
+                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
+                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                }
                 break;
             case R.id.tv_2:
-//                if (mCompanyType.equals("企业监管")) {
-//                    whatActivity(2);
-//                } else {
-//                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
-//                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
-//                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
-//                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
-//                    MvpThirdMainActivity.this.startActivity(intent);
-//                }
-                whatActivity(2);
+                if (mCompanyType.equals("企业监管")) {
+                    whatActivity(2);
+                } else {
+                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
+                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
+                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
+                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                }
                 break;
             case R.id.tv_3:
-//                if (mCompanyType.equals("企业监管")) {
-//                    whatActivity(1);
-//                } else {
-//                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
-//                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
-//                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
-//                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
-//                    MvpThirdMainActivity.this.startActivity(intent);
-//                }
-                whatActivity(1);
+                if (mCompanyType.equals("企业监管")) {
+                    whatActivity(1);
+                } else {
+                    INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
+                    LogUtil.d("========name===" + INTENT_VALUE + "  == " + Constant.ORGANSMANAGE);
+                    intent = new Intent(new Intent(MvpThirdMainActivity.this, WebH5Activity.class));
+                    intent.putExtra(Constant.INTENT_KEY, INTENT_VALUE);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                }
                 break;
         }
 
@@ -399,6 +401,13 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 GridCountResultBean gridCountBean = (GridCountResultBean) ecEvent.getData();
                 showAppCornerMarkCount(gridCountBean);
 
+                break;
+            case Constans.DANWEINUM:
+
+                DanWeiBean.ResultBean bean = (DanWeiBean.ResultBean) ecEvent.getData();
+                mTv1.setText(mLianStr + "    " + bean.getLwTotal());
+                mTv2.setText(mGuStr + "    " + bean.getZxTotal());
+                mTv3.setText(mBaoStr + "    " + bean.getBjTotal());
                 break;
         }
     }

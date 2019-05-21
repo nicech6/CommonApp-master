@@ -40,6 +40,8 @@ public interface Constant {
     String ORGANSMANAGE = "机构管理";
     String AREAMANAGE = "区域管理";
 
+    String DANWWEI="单位";
+
     int FISRT = 1;
     int SECOND = 2;
     int THIRD = 3;

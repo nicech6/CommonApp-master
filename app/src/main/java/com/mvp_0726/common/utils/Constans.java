@@ -87,4 +87,6 @@ public class Constans {
     public static final int OBD_SUCCESS = 68;//成功
     public static final int OBD_ERROR = 68;//失败
 
+    public static final int DANWEINUM = 100;
+
 }

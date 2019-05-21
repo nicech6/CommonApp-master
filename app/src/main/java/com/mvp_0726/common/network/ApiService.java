@@ -5,6 +5,7 @@ import com.mvp_0726.project_0726.home.model.GridCountBean;
 import com.mvp_0726.project_0726.home.model.MarqueeBean;
 import com.mvp_0726.project_0726.home.model.OrgandetailBean;
 import com.mvp_0726.project_0726.login.modle.ChangePwdBean;
+import com.mvp_0726.project_0726.login.modle.DanWeiBean;
 import com.mvp_0726.project_0726.web.model.GetSumTypeBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.LoginChangeBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.other.EquipmentCount;
@@ -117,5 +118,11 @@ public interface ApiService {
     @POST("h5/getsensorobd.action")
     Observable<GetsensorObdSuccessBean> getsensorObd(
             @Field("terminalNo") String terminalNo);
+
+    /*获取单位数目*/
+    @Headers({"urlname:zgjiuan"})
+    @FormUrlEncoded
+    @POST("system/statis/getTotalOrgan.action")
+    Observable<DanWeiBean> getDanweiNumber(@Field("pid") String pid);
 
 }

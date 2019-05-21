@@ -3,9 +3,9 @@ package com.mvp_0726.project_0726.home.contract;
 
 import com.mvp_0726.common.base.codereview.BaseView;
 
+
 public interface HomeContract {
     interface View extends BaseView<Object> {
-
     }
 
     interface Presenter {
@@ -16,5 +16,7 @@ public interface HomeContract {
         void getEquipmentCount(String pid);
         /*获取角标数量*/
         void getAppNum(String pid,String id);
+
+        void getdanweiNum(String pid);
     }
 }

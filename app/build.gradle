@@ -17,7 +17,7 @@ android {
         yueyunbusiness {
             keyAlias 'key'
             keyPassword 'yuefeng123456789'
-            storeFile file('E:/outwork/CommonApp-master/yueyunbusiness.jks')
+            storeFile file('/Users/CH/OutWork/CommonApp-master/yueyunbusiness.jks')
             storePassword 'yuefeng123456789'
         }
     }
@@ -100,6 +100,7 @@ android {
             zipAlignEnabled false
             shrinkResources false // 移除无用的resource文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.yueyunbusiness
         }
     }
     //采用动态替换字符串的方式生成不同的release.apk

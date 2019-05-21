@@ -105,7 +105,7 @@ public class SettingPoliceOnlineActivity extends BaseActivity implements Setting
 
         Intent intent = getIntent();
         String stringExtra = intent.getStringExtra("INTENT_KEY");
-        mIsDanwei = intent.getBooleanExtra("isDanwei", false);
+//        mIsDanwei = intent.getBooleanExtra("isDanwei", false);
         showTxt();
         if (TextUtils.isEmpty(stringExtra)) {
             return;

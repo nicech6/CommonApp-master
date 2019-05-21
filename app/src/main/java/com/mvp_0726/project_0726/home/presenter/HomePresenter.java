@@ -143,4 +143,9 @@ public class HomePresenter extends BasePresenterImpl<HomeContract.View, MvpMainA
                     }
                 });
     }
+
+    @Override
+    public void getdanweiNum(String pid) {
+
+    }
 }
