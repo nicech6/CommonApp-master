@@ -406,7 +406,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
 
                 DanWeiBean.ResultBean bean = (DanWeiBean.ResultBean) ecEvent.getData();
                 mTv1.setText(mLianStr + "    " + bean.getLwTotal());
-                mTv2.setText(mGuStr + "    " + bean.getZxTotal());
+                mTv2.setText(mGuStr + "    " + bean.getGzlxTotal());
                 mTv3.setText(mBaoStr + "    " + bean.getBjTotal());
                 break;
         }

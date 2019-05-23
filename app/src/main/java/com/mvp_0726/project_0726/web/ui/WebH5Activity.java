@@ -335,6 +335,8 @@ public class WebH5Activity extends BaseActivity implements H5Control, WebH5Contr
         }
         if (title.equals(Constant.XINGZHENGGONGWEN)) {
             SERVICE_URL = SERVICE_URL + "?type=" + type + "&id=" + userid + "&organid=" + pid;
+        } else if (title.equals(Constant.ORGANSMANAGE)) {
+            SERVICE_URL = SERVICE_URL + "?ischeck=" + 1 + "&id=" + userid + "&organid=" + pid;
         } else {
             SERVICE_URL = SERVICE_URL + "?id=" + userid + "&organid=" + pid;
         }
