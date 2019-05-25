@@ -166,7 +166,9 @@ public class SystemSettingActivity extends BaseActivity {
                 DataCleanManager.clearAllCache(SystemSettingActivity.this);
                 if (isRestart) {
                     Intent intent = new Intent(SystemSettingActivity.this, SelectUnitOrSepuviseActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     PreferencesUtils.putString(SystemSettingActivity.this, Constans.COOKIE_PREF, "");
                     AppManager.getAppManager().removedAlllActivity(SystemSettingActivity.this);

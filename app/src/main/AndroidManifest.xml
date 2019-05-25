@@ -82,6 +82,7 @@
 
         <activity
             android:name="com.mvp_0726.project_0726.login.ui.LoginActivity"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme_no"/>
         <activity
             android:name="com.mvp_0726.project_0726.home.ui.TestActivity"
