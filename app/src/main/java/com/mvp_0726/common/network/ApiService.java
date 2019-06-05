@@ -1,5 +1,6 @@
 package com.mvp_0726.common.network;
 
+import com.bean.BaojingDialogBean;
 import com.mvp_0726.project_0726.bean.settingpolice.GetsensorObdSuccessBean;
 import com.mvp_0726.project_0726.home.model.GridCountBean;
 import com.mvp_0726.project_0726.home.model.MarqueeBean;
@@ -124,5 +125,12 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("system/statis/getTotalOrgan.action")
     Observable<DanWeiBean> getDanweiNumber(@Field("pid") String pid);
+
+
+    /*获取单位数目*/
+    @Headers({"urlname:zgjiuan"})
+    @FormUrlEncoded
+    @POST("sensorQY/getData.action")
+    Observable<BaojingDialogBean> getBaojingDialog(@Field("type") String type, @Field("pid") String pid, @Field("pageNo") String pageNo, @Field("pageSize") String pageSize);
 
 }

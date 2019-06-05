@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -20,12 +21,16 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bean.BaojingDialogBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.mvp_0726.common.base.codereview.BaseActivity;
 import com.mvp_0726.common.event.CommonEvent;
 import com.mvp_0726.common.event.NetWorkChangeEvent;
+import com.mvp_0726.common.network.ApiRetrofit;
 import com.mvp_0726.common.network.HttpObservable;
 import com.mvp_0726.common.network.HttpResultObserver;
 import com.mvp_0726.common.utils.Constans;
@@ -48,6 +53,7 @@ import com.mvp_0726.project_0726.ui.setting.NewSettingManagerActivity;
 import com.mvp_0726.project_0726.utils.StringUtils;
 import com.mvp_0726.project_0726.utils.XunFeiUtils;
 import com.mvp_0726.project_0726.web.ui.WebH5Activity;
+import com.mvp_0726.service.BaojingDialog;
 import com.project.wisdomfirecontrol.R;
 import com.project.wisdomfirecontrol.common.base.Const;
 import com.project.wisdomfirecontrol.common.util.LogUtil;
@@ -122,6 +128,68 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
     private TextView mTv2;
     private TextView mTv3;
 
+    private Handler handler = new Handler();
+    private Runnable task = new Runnable() {
+        public void run() {
+            // TODO Auto-generated method stub
+            handler.postDelayed(this, 10 * 1000);//设置循环时间，此处是10秒
+            //需要执行的代码
+//            Log.d(TAG, "task");
+
+            HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().getBaojingDialog("1", StringUtils.getUserPid(getApplicationContext()), "1", "16"))
+                    .subscribe(new HttpResultObserver<BaojingDialogBean>() {
+
+                        @Override
+                        protected void onLoading(Disposable d) {
+
+                        }
+
+                        @Override
+                        protected void onSuccess(BaojingDialogBean o) {
+                            if (o != null && o.getData() != null && o.getData().size() > 0) {
+                                for (int i = 0; i < o.getData().size(); i++) {
+                                    if ("2".equals(o.getData().get(i).getState())) {
+                                        EventBus.getDefault().post("hehe");
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        protected void onFail(Exception e) {
+
+                        }
+                    });
+        }
+    };
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getData(String s) {
+        showSuccessDialog(this, "报警啦");
+    }
+
+    BaojingDialog mBaojingDialog;
+
+    public void showSuccessDialog(Context context, String txt) {
+        if (mBaojingDialog == null) {
+            mBaojingDialog = new BaojingDialog(context);
+        }
+        mBaojingDialog.setContent(txt);
+        mBaojingDialog.hideCancle();
+        mBaojingDialog.setDialogCallback(new BaojingDialog.Dialogcallback() {
+            @Override
+            public void dialogdo(LinearLayout container) {
+                mBaojingDialog.dismiss();
+            }
+
+            @Override
+            public void dialogcancle() {
+                mBaojingDialog.dismiss();
+            }
+        });
+
+        mBaojingDialog.show();
+    }
 
     @Override
     protected int getContentViewResId() {
@@ -164,6 +232,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
         initRecycleView();
         checkVersion();
+        handler.post(task);//立即调用
     }
 
 
@@ -730,6 +799,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         if (mXunFeiUtils != mXunFeiUtils) {
             mXunFeiUtils.stopSpeak();
         }
+        handler.removeCallbacks(task);
     }
 
     @Override
