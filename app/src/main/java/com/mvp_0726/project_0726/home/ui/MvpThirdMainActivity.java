@@ -17,13 +17,11 @@ import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bean.BaojingDialogBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -59,7 +57,6 @@ import com.project.wisdomfirecontrol.common.base.Const;
 import com.project.wisdomfirecontrol.common.util.LogUtil;
 import com.project.wisdomfirecontrol.common.util.SharedPreUtil;
 import com.project.wisdomfirecontrol.firecontrol.download.UpdateManager;
-import com.project.wisdomfirecontrol.firecontrol.model.bean.login.LoginChangeBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.LoginChangeDataBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.MenuDatasBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.MenuDatasBeanX;
@@ -149,7 +146,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                             if (o != null && o.getData() != null && o.getData().size() > 0) {
                                 for (int i = 0; i < o.getData().size(); i++) {
                                     if ("2".equals(o.getData().get(i).getState())) {
-                                        EventBus.getDefault().post("hehe");
+                                        EventBus.getDefault().post(getUrl(o.getData().get(i).getId()));
                                     }
                                 }
                             }
@@ -163,19 +160,25 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
     };
 
+    public String getUrl(String id) {
+        String url = "";
+        url = "http://www.zgjiuan.cn/sensorQY/showcall110.action?sensorid=" + id + "&title=报警信息";
+        return url;
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void getData(String s) {
-        showSuccessDialog(this, "报警啦");
+    public void getData(String url) {
+        showSuccessDialog(this, url);
+
     }
 
     BaojingDialog mBaojingDialog;
 
-    public void showSuccessDialog(Context context, String txt) {
+    public void showSuccessDialog(Context context, String url) {
         if (mBaojingDialog == null) {
             mBaojingDialog = new BaojingDialog(context);
         }
-        mBaojingDialog.setContent(txt);
-        mBaojingDialog.hideCancle();
+        mBaojingDialog.setUil(url);
         mBaojingDialog.setDialogCallback(new BaojingDialog.Dialogcallback() {
             @Override
             public void dialogdo(LinearLayout container) {
@@ -201,6 +204,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+
         presenter = new HomeThirdPresenter(this, this);
 //        tv_title.setText(R.string.jiuan_xiaofng);
         iv_back.setVisibility(View.INVISIBLE);
