@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_99"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <com.baidu.mapapi.map.TextureMapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/btn_find"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_dp_40"
+            android:background="@color/gray_99"
+            android:clickable="false"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/et_find"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/txt_size_20"
+                android:layout_marginTop="@dimen/txt_dp_3"
+                android:layout_marginEnd="@dimen/txt_size_20"
+                android:layout_marginBottom="@dimen/txt_dp_3"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:src="@drawable/seekbok" />
+
+            <TextView
+                android:id="@+id/tv_soushuo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/transparent"
+                android:drawableLeft="@drawable/seek"
+                android:drawablePadding="@dimen/txt_dp_3"
+                android:text="搜索"
+                android:textSize="@dimen/txt_size_13"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:clickable="false"
+            android:padding="@dimen/txt_dp_8"
+            android:src="@drawable/btn_location_on"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:ignore="UselessLeaf">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            tools:ignore="ScrollViewSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/txt_dp_24"
+                android:layout_marginTop="@dimen/txt_dp_5"
+                android:layout_marginBottom="@dimen/txt_dp_5"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="@dimen/txt_dp_40"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/txt_dp_15"
+                    android:gravity="center"
+                    android:text="经度："
+                    android:textSize="@dimen/txt_size_13"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tv_lng"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/list_divider"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/txt_dp_3"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/txt_size_12"
+                    tools:ignore="HardcodedText,RtlSymmetry" />
+
+
+                <TextView
+                    android:layout_width="@dimen/txt_dp_40"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/txt_dp_15"
+                    android:gravity="center"
+                    android:text="纬度："
+                    android:textSize="@dimen/txt_size_13"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tv_lat"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/txt_dp_15"
+                    android:layout_weight="1"
+                    android:background="@color/list_divider"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/txt_dp_3"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/txt_size_12"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/txt_dp_30"
+                android:layout_marginStart="@dimen/txt_dp_5"
+                android:layout_marginTop="@dimen/txt_dp_5"
+                android:layout_marginEnd="@dimen/txt_dp_20"
+                android:layout_marginBottom="@dimen/txt_dp_5"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:id="@+id/tv_province"
+                    style="@style/txt_province_city_15"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/tv_city"
+                    style="@style/txt_province_city_15"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+
+                <TextView
+                    android:id="@+id/tv_area"
+                    style="@style/txt_province_city_15"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/tv_address_detail"
+                style="@style/txt_tv_ed_black_13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/txt_dp_30"
+                android:layout_marginStart="@dimen/txt_dp_20"
+                android:layout_marginTop="@dimen/txt_dp_5"
+                android:layout_marginEnd="@dimen/txt_dp_20"
+                android:layout_marginBottom="@dimen/txt_dp_5"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="详细地址："
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:ignore="HardcodedText" />
+
+
+                <EditText
+                    android:id="@+id/tv_address_detail_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_sousuostu"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/txt_dp_5"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:ignore="HardcodedText,LabelFor,RtlHardcoded,RtlSymmetry,TextFields" />
+
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/tv_company_name"
+                style="@style/edt_txt_13sp_black"
+                android:hint="公司全称（必填）"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+
+            <EditText
+                android:id="@+id/tv_user_name"
+                style="@style/edt_txt_13sp_black"
+                android:hint="姓名（必填)"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+
+            <EditText
+                android:id="@+id/tv_user_area"
+                style="@style/edt_txt_13sp_black"
+                android:hint="住址"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+
+            <EditText
+                android:id="@+id/tv_user_phone"
+                style="@style/edt_txt_13sp_black"
+                android:hint="手机号"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/txt_dp_32"
+                android:layout_marginTop="@dimen/txt_dp_8"
+                android:layout_marginEnd="@dimen/txt_dp_32"
+                android:layout_marginBottom="@dimen/txt_dp_5"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <EditText
+                    android:id="@+id/edt_msg_pwd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/txt_dp_36"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_sousuostu"
+                    android:gravity="center_vertical"
+                    android:hint="短信验证码"
+                    android:paddingStart="@dimen/txt_dp_5"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:ignore="HardcodedText,RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_send_msg_pwd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/txt_dp_36"
+                    android:layout_marginStart="@dimen/txt_dp_15"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/shape_blue"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/txt_dp_5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:ignore="HardcodedText,RtlSymmetry" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edt_user_pwd"
+                style="@style/edt_txt_13sp_black"
+                android:hint="登录密码(至少包含字母数字8位)"
+                android:inputType="numberPassword"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+
+            <EditText
+                android:id="@+id/tv_user_pwd_again"
+                style="@style/edt_txt_13sp_black"
+                android:hint="确认登录密码"
+                android:inputType="numberPassword"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/txt_dp_10"
+                android:background="@color/transparent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_agree"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="35dp"
+                    android:background="@drawable/selector_treeslist_press_bg"
+                    android:button="@null" />
+
+                <TextView
+                    android:id="@+id/tv_xieye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/txt_dp_3"
+                    android:gravity="center_vertical"
+                    android:text="我同意并遵守《乆安消防云平台服务协议》"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/txt_size_12" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_success"
+                android:layout_width="@dimen/txt_dp_150"
+                android:layout_height="@dimen/txt_dp_36"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/txt_dp_8"
+                android:layout_marginBottom="@dimen/txt_dp_30"
+                android:background="@drawable/shape_blue"
+                android:gravity="center"
+                android:text="完成"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_14"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

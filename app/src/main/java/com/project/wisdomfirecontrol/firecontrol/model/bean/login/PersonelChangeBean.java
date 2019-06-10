@@ -36,6 +36,16 @@ public class PersonelChangeBean implements Serializable {
     private String companyType;
     private List<RoleBean> role;
 
+    private int isuser;
+
+    public int getIsuser() {
+        return isuser;
+    }
+
+    public void setIsuser(int isuser) {
+        this.isuser = isuser;
+    }
+
     public String getId() {
         return id;
     }

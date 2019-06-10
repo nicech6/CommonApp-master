@@ -1,6 +1,7 @@
 package com.mvp_0726.common.network;
 
 import com.bean.BaojingDialogBean;
+import com.client.HomeNumberBean;
 import com.mvp_0726.project_0726.bean.settingpolice.GetsensorObdSuccessBean;
 import com.mvp_0726.project_0726.home.model.GridCountBean;
 import com.mvp_0726.project_0726.home.model.MarqueeBean;
@@ -39,6 +40,20 @@ public interface ApiService {
     @POST("h5/login.action")
     Observable<LoginChangeBean> login(@Field("username") String username, @Field("password") String password);
 
+    /*注册用户端*/
+    @Headers({"urlname:zgjiuan"})
+    @FormUrlEncoded
+    @POST("login/register_user.action")
+    Observable<LoginChangeBean> loginClient(
+            @Field("position") String position
+            , @Field("orgName") String orgName
+            , @Field("address") String address
+            , @Field("telNum") String telNum
+            , @Field("password") String password
+            , @Field("name") String realName
+            , @Field("lng") String lng
+            , @Field("lat") String lat);
+
     /*获取公司注册信息*/
     @Headers({"urlname:zgjiuan"})
     @FormUrlEncoded
@@ -50,6 +65,13 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("h5/getequipmentcount.action")
     Observable<EquipmentCount> getequipmentcount(@Field("pid") String pid);
+
+    /*用户端
+    设备报警，联网设备，设备故障数量*/
+    @Headers({"urlname:zgjiuan"})
+    @FormUrlEncoded
+    @POST("sensorQY/countByPerson.action")
+    Observable<HomeNumberBean> getClientequipmentcount(@Field("personId") String personId);
 
     /*轮播设备报警数量*/
     @Headers({"urlname:zgjiuan"})

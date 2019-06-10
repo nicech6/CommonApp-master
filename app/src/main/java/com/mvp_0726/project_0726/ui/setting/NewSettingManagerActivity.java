@@ -20,11 +20,15 @@ import com.mvp_0726.project_0726.ui.adapter.MultiNewManageAdapter;
 import com.project.wisdomfirecontrol.R;
 import com.project.wisdomfirecontrol.common.base.BaseActivity;
 import com.project.wisdomfirecontrol.common.base.Global;
+import com.project.wisdomfirecontrol.common.base.UserInfo;
+import com.project.wisdomfirecontrol.common.base.UserManage;
+import com.project.wisdomfirecontrol.common.util.SharedPreUtil;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.other.SubmitBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.setting.SettingManagerBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.setting.SettingManagerDataBean;
 import com.project.wisdomfirecontrol.firecontrol.model.protocol.CommonProtocol;
 import com.project.wisdomfirecontrol.firecontrol.model.protocol.IHttpService;
+import com.project.wisdomfirecontrol.firecontrol.model.protocol.RetrofitManager;
 import com.project.wisdomfirecontrol.firecontrol.ui.activity_setting.MonitoringAreaInfosActivity;
 import com.project.wisdomfirecontrol.firecontrol.ui.activity_setting.NewAddMonitoringAreaFirstActivity;
 import com.project.wisdomfirecontrol.firecontrol.ui.activity_setting.QRcodeActivity;
@@ -149,7 +153,14 @@ public class NewSettingManagerActivity extends BaseActivity {
 //        pid = "yun";
 //        Log.d(TAG, "getNetDatas: " + pid);
 //        RetrofitManager.changeApiBaseUrl(NetworkUrl.ANDROID_BAIDU_SERVICE);
-        commonProtocol.getsensor(this, pid);
+        UserInfo userIdInfo = UserManage.getInstance().getUserIdInfo(com.project.wisdomfirecontrol.common.base.Global.mContext);
+        String userid = userIdInfo.getUserid();
+        if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+            RetrofitManager.changeApiBaseUrl("http://www.zgjiuan.cn/");
+            commonProtocol.getClientsensor(this, userid);
+        } else {
+            commonProtocol.getsensor(this, pid);
+        }
     }
 
     @Override

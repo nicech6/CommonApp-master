@@ -157,14 +157,17 @@ public class SplashActivity extends com.mvp_0726.common.base.codereview.BaseActi
                 new String[]{
                         Manifest.permission.READ_CONTACTS,
                         Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_WIFI_STATE,
+                        Manifest.permission.CAMERA
                 }
         );
         // 如果这3个权限全都拥有, 则直接执行备份代码
-        if (isAllGranted) {
-            isFristLogin();
-            return;
-        }
+//        if (isAllGranted) {
+//            isFristLogin();
+//            return;
+//        }
 
         /**
          * 第 2 步: 请求权限
@@ -175,7 +178,10 @@ public class SplashActivity extends com.mvp_0726.common.base.codereview.BaseActi
                 new String[]{
                         Manifest.permission.READ_CONTACTS,
                         Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_WIFI_STATE,
+                        Manifest.permission.CAMERA
                 },
                 MY_PERMISSION_REQUEST_CODE
         );
@@ -329,8 +335,10 @@ public class SplashActivity extends com.mvp_0726.common.base.codereview.BaseActi
         type = personel.getIsadmin();
         imagthpath = personel.getImagthpath();
         String orgShortName = personel.getOrgShortName();
-
-        String roleName = personel.getRole().get(0).getRoleName();
+        String roleName = null;
+        if (null != personel.getRole() && personel.getRole().size() > 0) {
+            roleName = personel.getRole().get(0).getRoleName();
+        }
         String companyType = personel.getCompanyType();
         if (!TextUtils.isEmpty(orgShortName) && !TextUtils.isEmpty(roleName)) {
             companyLogoName = orgShortName + "-" + roleName;

@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.bean.BaojingDialogBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.client.HomeNumberBean;
 import com.mvp_0726.common.base.codereview.BaseActivity;
 import com.mvp_0726.common.event.CommonEvent;
 import com.mvp_0726.common.event.NetWorkChangeEvent;
@@ -54,6 +55,8 @@ import com.mvp_0726.project_0726.web.ui.WebH5Activity;
 import com.mvp_0726.service.BaojingDialog;
 import com.project.wisdomfirecontrol.R;
 import com.project.wisdomfirecontrol.common.base.Const;
+import com.project.wisdomfirecontrol.common.base.UserInfo;
+import com.project.wisdomfirecontrol.common.base.UserManage;
 import com.project.wisdomfirecontrol.common.util.LogUtil;
 import com.project.wisdomfirecontrol.common.util.SharedPreUtil;
 import com.project.wisdomfirecontrol.firecontrol.download.UpdateManager;
@@ -223,7 +226,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
 
         recyclerView.setLayoutManager(new GridLayoutManager(MvpThirdMainActivity.this, Const.COUNT_THIRD));
         mCompanyType = SharedPreUtil.getString(this, "companyType", "");
-        if (mCompanyType.equals("企业监管")) {
+        if (mCompanyType.equals("企业监管") || 1 == SharedPreUtil.getInt(this, "isuser", 0)) {
             mLianStr = "联网设备";
             mBaoStr = "报警设备";
             mGuStr = "故障设备";
@@ -314,10 +317,19 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
         if (presenter != null) {
 //            ApiRetrofit.changeApiBaseUrl(NetworkUrl.ANDROID_BAIDU_SERVICE);
-            if (mCompanyType.equals("企业监管")) {
-                presenter.getEquipmentCount(pid);
+            UserInfo userIdInfo = UserManage.getInstance().getUserIdInfo(com.project.wisdomfirecontrol.common.base.Global.mContext);
+            String userid = userIdInfo.getUserid();
+            if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+                presenter.getClientEquipmentCount(userid);
+                if (TextUtils.isEmpty(orgShortName)) {//+ mCompanyType
+                    tv_app_company.setText("用户端");
+                }
             } else {
-                presenter.getdanweiNum(pid);
+                if (mCompanyType.equals("企业监管")) {
+                    presenter.getEquipmentCount(pid);
+                } else {
+                    presenter.getdanweiNum(pid);
+                }
             }
             presenter.getAppNum(pid, mId);
             new Thread(new Runnable() {
@@ -409,6 +421,12 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 break;
 
             case R.id.tv_1:
+                if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+                    intent = new Intent(MvpThirdMainActivity.this, NewSettingManagerActivity.class);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                    return;
+                }
+
                 if (mCompanyType.equals("企业监管")) {
                     whatActivity(0);
                 } else {
@@ -420,7 +438,12 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 }
                 break;
             case R.id.tv_2:
-                if (mCompanyType.equals("企业监管")) {
+                if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+                    intent = new Intent(MvpThirdMainActivity.this, NewSettingManagerActivity.class);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                    return;
+                }
+                if (mCompanyType.equals("企业监管") ) {
                     whatActivity(2);
                 } else {
                     INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
@@ -431,7 +454,12 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 }
                 break;
             case R.id.tv_3:
-                if (mCompanyType.equals("企业监管")) {
+                if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+                    intent = new Intent(MvpThirdMainActivity.this, NewSettingManagerActivity.class);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                    return;
+                }
+                if (mCompanyType.equals("企业监管") ) {
                     whatActivity(1);
                 } else {
                     INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
@@ -481,6 +509,12 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 mTv1.setText(mLianStr + "    " + bean.getLwTotal());
                 mTv2.setText(mGuStr + "    " + bean.getGzlxTotal());
                 mTv3.setText(mBaoStr + "    " + bean.getBjTotal());
+                break;
+            case Constans.CLIENTNUMBER:
+                HomeNumberBean.ResultBean resultBean = (HomeNumberBean.ResultBean) ecEvent.getData();
+                mTv1.setText(mLianStr + "    " + resultBean.getOnlineCount());
+                mTv2.setText(mGuStr + "    " + resultBean.getFaultCount());
+                mTv3.setText(mBaoStr + "    " + resultBean.getAlarmCount());
                 break;
         }
     }

@@ -14,9 +14,12 @@ public interface HomeContract {
         void getOrgandetailDatas(String pid);
 
         void getEquipmentCount(String pid);
+
         /*获取角标数量*/
-        void getAppNum(String pid,String id);
+        void getAppNum(String pid, String id);
 
         void getdanweiNum(String pid);
+
+        void getClientEquipmentCount(String personId);
     }
 }

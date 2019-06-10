@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_person_type"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
     <!--android:background="@drawable/bg"-->
-    <include layout="@layout/title_bar"/>
+    <include layout="@layout/title_bar" />
 
     <TextView
         android:id="@+id/tv_spase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,36 +28,54 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="@color/transparent"
-            android:src="@drawable/gifphoto"/>
+            android:src="@drawable/gifphoto" />
 
 
         <TextView
             android:id="@+id/tv_login_type_unit"
-            android:layout_width="wrap_content"
+            android:layout_width="230dp"
             android:layout_height="@dimen/txt_dp_45"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="登录"
             android:layout_below="@id/gifimage"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/selector_btn_login"/>
+            android:background="@drawable/shape_blue_6dp"/>
 
         <TextView
             android:id="@+id/tv_login_type_supevice"
-            android:layout_width="wrap_content"
+            android:layout_width="230dp"
+            android:textColor="@color/white"
             android:layout_height="@dimen/txt_dp_45"
+            android:gravity="center"
+            android:text="注册"
             android:layout_below="@id/tv_login_type_unit"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/txt_dp_22"
-            android:background="@drawable/selector_btn_regist"/>
+            android:layout_marginTop="12dp"
+            android:background="@drawable/shape_blue_6dp"/>
+
+        <TextView
+            android:id="@+id/tv_login_type_client"
+            android:layout_width="230dp"
+            android:layout_height="@dimen/txt_dp_45"
+            android:layout_below="@id/tv_login_type_supevice"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/shape_blue_6dp"
+            android:gravity="center"
+            android:text="注册为用户端"
+            android:textColor="@color/white" />
 
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="45dp"
-            android:layout_below="@id/tv_login_type_supevice"
+            android:layout_below="@id/tv_login_type_client"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/txt_dp_10"
             android:layout_marginTop="@dimen/txt_dp_45"
+            android:layout_marginBottom="@dimen/txt_dp_10"
             android:background="@color/transparent"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo" />
 
 
     </RelativeLayout>

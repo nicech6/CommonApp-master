@@ -128,6 +128,13 @@ public class CommonProtocol extends BaseProtocol {
                 callback, IHttpService.TYPE_SETTINGMANAGER, SettingManagerBean.class);
     }
 
+    /*获取设备信息的接口
+     */
+    public void getClientsensor(final OnHttpCallback callback, String perisonId) {
+        super.execute(super.getHttpService().getClientsensor(perisonId,"50","1"),
+                callback, IHttpService.TYPE_SETTINGMANAGER, SettingManagerBean.class);
+    }
+
     /*删除已选设备接口
      */
     public void deletesensor(final OnHttpCallback callback, String id) {
