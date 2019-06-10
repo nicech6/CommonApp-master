@@ -210,9 +210,12 @@ public class SettingInfosActivity extends BaseActivity {
         entries_e.add(new BarEntry(0, returnFloat(ae)));
         entries_e.add(new BarEntry(1, returnFloat(be)));
         entries_e.add(new BarEntry(2, returnFloat(ce)));
-        String substring = louele.substring(0, louele.length() - 2);
-        LogUtil.d("=============" + ae + " ++ " + be + " ++ " + ce + " +  " + substring);
-        entries_e.add(new BarEntry(3, Float.valueOf(substring)));
+        if (!TextUtils.isEmpty(louele)) {
+            String substring = louele.substring(0, louele.length() - 2);
+//        LogUtil.d("=============" + ae + " ++ " + be + " ++ " + ce + " +  " + substring);
+            entries_e.add(new BarEntry(3, Float.valueOf(substring)));
+        }
+//
 //
         String av = obd.getAv();
         String bv = obd.getBv();
@@ -439,7 +442,7 @@ public class SettingInfosActivity extends BaseActivity {
         if (reqType == IHttpService.TYPE_GETOBD) {
             GetsensorObdSuccessBean bean = (GetsensorObdSuccessBean) obj.obj;
             GetsensorObdDataBean obdDataBean = bean.getData().get(0);
-            LogUtil.d("============size==" + bean.getData().size() + "  +++ " + obdDataBean.getProcUserName());
+//            LogUtil.d("============size==" + bean.getData().size() + "  +++ " + obdDataBean.getProcUserName());
             ObdParamBean obdBean = obdDataBean.getObdParam();
             showObdDatas(obdBean);
         }

@@ -585,8 +585,8 @@ public class RegisterClientActivity extends BaseActivity {
         bean.setTelNum(tv_user_phone.getText().toString());
         bean.setPosition(tv_address_detail_room.getText().toString());
 
-        HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().loginClient(bean.getPosition(), bean.getOrgName(), bean.getAddress(), bean.getTelNum(), bean.getPassword(),  bean.getName(), bean.getLng(), bean.getLat()))
-                .subscribe(new HttpResultObserver<SubmitBean>() {
+        HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().loginClient(bean.getPosition(), bean.getOrgName(), bean.getAddress(), bean.getTelNum(), bean.getPassword(), bean.getName(), bean.getLng(), bean.getLat()))
+                .subscribe(new HttpResultObserver<RegisterBean>() {
 
                     @Override
                     protected void onLoading(Disposable d) {
@@ -594,8 +594,10 @@ public class RegisterClientActivity extends BaseActivity {
                     }
 
                     @Override
-                    protected void onSuccess(SubmitBean o) {
-                        showToast("注册成功");
+                    protected void onSuccess(RegisterBean o) {
+                        if ("注册成功".equals(o.getMessage())) {
+                            showToast("注册成功");
+                        }
                         Intent intent = new Intent(RegisterClientActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();

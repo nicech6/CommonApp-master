@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.project.wisdomfirecontrol.R;
 import com.project.wisdomfirecontrol.common.base.BaseActivity;
 import com.project.wisdomfirecontrol.common.base.Global;
+import com.project.wisdomfirecontrol.common.base.UserInfo;
+import com.project.wisdomfirecontrol.common.base.UserManage;
+import com.project.wisdomfirecontrol.common.util.SharedPreUtil;
 import com.project.wisdomfirecontrol.common.util.StringUtils;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.other.GetmonitorAreaBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.other.GetmonitorAreaDataBean;
@@ -50,6 +53,8 @@ public class AddNewSettingActivity extends BaseActivity {
     private GetmonitorAreaDataBeanLvAdapter areaAdapter;
     private String monitorAreaid;
     private SuccessDialog successDialog;
+    private LinearLayout llName, llPhone;
+    private EditText mEditTextName, mEditTextPhone;
 
     @Override
     public int getLayoutRes() {
@@ -66,6 +71,14 @@ public class AddNewSettingActivity extends BaseActivity {
         tv_phone_tel = findView(R.id.tv_phone_tel);//重新扫描
         tv_select_area = findView(R.id.tv_select_area);
         tv_next = findView(R.id.tv_next);
+        llName = findViewById(R.id.ll_name);
+        llPhone = findViewById(R.id.ll_phone);
+        if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+            llName.setVisibility(View.VISIBLE);
+            llPhone.setVisibility(View.VISIBLE);
+        }
+        mEditTextName = findViewById(R.id.tv_client_name);
+        mEditTextPhone = findViewById(R.id.tv_client_phone);
     }
 
     @Override
@@ -183,7 +196,23 @@ public class AddNewSettingActivity extends BaseActivity {
         showWaitDialog(this, getString(R.string.inupdate));
         commonProtocol = new CommonProtocol();
 //        pid = "yun";
-        commonProtocol.savesensor(this, "", pid, type, createTime, terminalNO, sensorPosition, monitorAreaid);
+        if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+            if (null == mEditTextName.getText().toString()) {
+                showToast("请先输入负责人名字");
+                return;
+            }
+            if (null == mEditTextPhone.getText().toString()) {
+                showToast("请先输入负责人电话");
+                return;
+            }
+            UserInfo userIdInfo = UserManage.getInstance().getUserIdInfo(Global.mContext);
+            String userid = userIdInfo.getUserid();
+            commonProtocol.savesensor(this, "", pid, type, createTime, terminalNO, sensorPosition, monitorAreaid, userid,
+                    mEditTextName.getText().toString(),
+                    mEditTextPhone.getText().toString());
+        } else {
+            commonProtocol.savesensor(this, "", pid, type, createTime, terminalNO, sensorPosition, monitorAreaid, null, null, null);
+        }
     }
 
     /*选择监控区*/

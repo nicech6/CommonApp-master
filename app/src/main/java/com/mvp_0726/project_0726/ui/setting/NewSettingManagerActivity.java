@@ -156,7 +156,6 @@ public class NewSettingManagerActivity extends BaseActivity {
         UserInfo userIdInfo = UserManage.getInstance().getUserIdInfo(com.project.wisdomfirecontrol.common.base.Global.mContext);
         String userid = userIdInfo.getUserid();
         if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
-            RetrofitManager.changeApiBaseUrl("http://www.zgjiuan.cn/");
             commonProtocol.getClientsensor(this, userid);
         } else {
             commonProtocol.getsensor(this, pid);
@@ -442,7 +441,7 @@ public class NewSettingManagerActivity extends BaseActivity {
     }
 
     private void showNetDatas(List<SettingManagerDataBean> list) {
-        listData.addAll(list);
+//        listData.addAll(list);
         initRecycleView();
     }
 

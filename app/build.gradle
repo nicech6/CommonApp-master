@@ -17,7 +17,7 @@ android {
         yueyunbusiness {
             keyAlias 'key'
             keyPassword 'yuefeng123456789'
-            storeFile file('/Users/CH/OutWork/CommonApp-master/yueyunbusiness.jks')
+            storeFile file('E:/outwork/CommonApp-master/yueyunbusiness.jks')
             storePassword 'yuefeng123456789'
         }
     }
@@ -39,8 +39,8 @@ android {
         applicationId "yuefeng.com.wisdomfirecontrol"
         minSdkVersion 17
         targetSdkVersion 24
-        versionCode 17
-        versionName "1.1.7"
+        versionCode 18
+        versionName "1.1.8"
 
         multiDexEnabled true
         //当方法数超过65535(方法的索引使用的是一个short值，

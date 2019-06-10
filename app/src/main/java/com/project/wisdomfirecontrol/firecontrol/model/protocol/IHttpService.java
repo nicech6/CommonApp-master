@@ -324,8 +324,8 @@ public interface IHttpService {
     @POST("sensorQY/listByPerson.action")
     Call<JsonObject> getClientsensor(
             @Query("personId") String personId
-            , @Query("pageSize") String pageSize
-            , @Query("pageNo") String pageNo);
+            , @Query("type") String type
+    );
 
     /*删除设备管理*/
     @POST("deletesensor.action")
@@ -351,7 +351,10 @@ public interface IHttpService {
             @Query("createTime") String createTime,
             @Query("terminalNO") String terminalNO,
             @Query("sensorPosition") String sensorPosition,
-            @Query("monitorAreaid") String monitorAreaid);
+            @Query("monitorAreaid") String monitorAreaid,
+            @Query("personId") String personId,
+            @Query("manager") String manager,
+            @Query("managerPhone") String managerPhone);
 
 
     /*获取监控区域服务接口*/

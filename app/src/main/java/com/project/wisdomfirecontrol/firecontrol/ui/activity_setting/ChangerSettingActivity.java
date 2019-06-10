@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.project.wisdomfirecontrol.R;
 import com.project.wisdomfirecontrol.common.base.BaseActivity;
 import com.project.wisdomfirecontrol.common.base.Global;
+import com.project.wisdomfirecontrol.common.base.UserInfo;
+import com.project.wisdomfirecontrol.common.base.UserManage;
+import com.project.wisdomfirecontrol.common.util.SharedPreUtil;
 import com.project.wisdomfirecontrol.common.util.StringUtils;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.other.GetmonitorAreaBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.other.GetmonitorAreaDataBean;
@@ -81,6 +84,8 @@ public class ChangerSettingActivity extends BaseActivity {
         tv_phone_tel = findView(R.id.tv_phone_tel);//重新扫描
         tv_select_area = findView(R.id.tv_select_area);//监控区
         tv_next = findView(R.id.tv_next);
+        mEditTextName = findViewById(R.id.tv_client_name);
+        mEditTextPhone = findViewById(R.id.tv_client_phone);
     }
 
     @Override
@@ -147,7 +152,7 @@ public class ChangerSettingActivity extends BaseActivity {
     private void tv_personal_name() {
         View typeView = LayoutInflater.from(this).inflate(R.layout.lv_item_type_login, null);
         final PhotoUtils photoUtils = new PhotoUtils(this, typeView, (int) Global.mScreenWidth / 2,
-                ActionBar.LayoutParams.WRAP_CONTENT, tv_personal_name, false,true);
+                ActionBar.LayoutParams.WRAP_CONTENT, tv_personal_name, false, true);
         ListView listView = typeView.findViewById(R.id.lv_item_type);
         final List<String> list = new ArrayList<>();
         list.add("消防栓");
@@ -198,13 +203,32 @@ public class ChangerSettingActivity extends BaseActivity {
 
     }
 
+    private EditText mEditTextName, mEditTextPhone;
+
     /*提交*/
     private void sumbit(String type, String createTime, String terminalNO, String sensorPosition, String monitorAreaid) {
         pid = DatasUtils.getUserPid(this);
         showWaitDialog(this, getString(R.string.inupdate));
         commonProtocol = new CommonProtocol();
 //        pid = "yun";
-        commonProtocol.savesensor(this, sensorid, pid, type, createTime, terminalNO, sensorPosition, monitorAreaid);
+        if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+            if (null == mEditTextName.getText().toString()) {
+                showToast("请先输入负责人名字");
+                return;
+            }
+            if (null == mEditTextPhone.getText().toString()) {
+                showToast("请先输入负责人电话");
+                return;
+            }
+            UserInfo userIdInfo = UserManage.getInstance().getUserIdInfo(Global.mContext);
+            String userid = userIdInfo.getUserid();
+            commonProtocol.savesensor(this, "", pid, type, createTime, terminalNO, sensorPosition, monitorAreaid, userid,
+                    mEditTextName.getText().toString(),
+                    mEditTextPhone.getText().toString());
+        } else {
+            commonProtocol.savesensor(this, sensorid, pid, type, createTime, terminalNO, sensorPosition, monitorAreaid, null, null, null);
+        }
+
     }
 
     /*选择监控区*/
@@ -212,7 +236,7 @@ public class ChangerSettingActivity extends BaseActivity {
     private void tv_select_area() {
         if (areaData.size() > 0) {
             showAreaName(areaData);
-        }else {
+        } else {
             pid = DatasUtils.getUserPid(this);
             showWaitDialog(this, getString(R.string.inupdate));
             commonProtocol = new CommonProtocol();
@@ -301,7 +325,7 @@ public class ChangerSettingActivity extends BaseActivity {
     private void showAreaName(final List<GetmonitorAreaDataBean> areaData) {
         View typeView = LayoutInflater.from(this).inflate(R.layout.lv_item_type_login, null);
         final PhotoUtils photoUtils = new PhotoUtils(this, typeView, (int) Global.mScreenWidth / 2,
-                ActionBar.LayoutParams.WRAP_CONTENT, tv_select_area, false,true);
+                ActionBar.LayoutParams.WRAP_CONTENT, tv_select_area, false, true);
         ListView listView = typeView.findViewById(R.id.lv_item_type);
 
         if (areaAdapter == null) {

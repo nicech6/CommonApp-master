@@ -131,7 +131,7 @@ public class CommonProtocol extends BaseProtocol {
     /*获取设备信息的接口
      */
     public void getClientsensor(final OnHttpCallback callback, String perisonId) {
-        super.execute(super.getHttpService().getClientsensor(perisonId,"50","1"),
+        super.execute(super.getHttpService().getClientsensor(perisonId, null),
                 callback, IHttpService.TYPE_SETTINGMANAGER, SettingManagerBean.class);
     }
 
@@ -158,8 +158,8 @@ public class CommonProtocol extends BaseProtocol {
 
     /*保存修改设备信息接口*/
     public void savesensor(final OnHttpCallback callback, String id, String pid, String type,
-                           String createTime, String terminalNO, String sensorPosition, String monitorAreaid) {
-        super.execute(super.getHttpService().savesensor(id, pid, type, createTime, terminalNO, sensorPosition, monitorAreaid),
+                           String createTime, String terminalNO, String sensorPosition, String monitorAreaid, String personId, String manager, String managerPhone) {
+        super.execute(super.getHttpService().savesensor(id, pid, type, createTime, terminalNO, sensorPosition, monitorAreaid, personId, manager, managerPhone),
                 callback, IHttpService.TYPE_GETAREAPERSON, SubmitBean.class);
     }
 

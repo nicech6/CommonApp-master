@@ -53,6 +53,34 @@ public class SettingManagerDataBean implements Serializable {
     private String isc;
     private String state;
 
+    private String personId;
+    private String manager;
+    private String managerPhone;
+
+    public String getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
+
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
+    }
+
+    public String getManagerPhone() {
+        return managerPhone;
+    }
+
+    public void setManagerPhone(String managerPhone) {
+        this.managerPhone = managerPhone;
+    }
+
     private ObdBean obd;
 
     public ObdBean getObd() {
