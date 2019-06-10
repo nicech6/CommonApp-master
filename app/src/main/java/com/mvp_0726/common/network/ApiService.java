@@ -30,7 +30,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    String uploadfile = "http://www.zgjiuan.cn/zgbd/file/fileUploadStatus";
+    String uploadfile = "http://111.231.243.103:8090/fireControl/zgbd/file/fileUploadStatus";
     String HOST_IP = "zgbd_fireControl/h5/";
     String HOST_FIRECONTROL = "zgbd_fireControl/application/message/";
 

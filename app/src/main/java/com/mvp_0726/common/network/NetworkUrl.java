@@ -9,10 +9,10 @@ import com.mvp_0726.common.base.MvpApplication;
 
 public class NetworkUrl {
 
-    public static final String ANDROID_TEST_SERVICE = "http://120.78.217.251/";
+    public static final String ANDROID_TEST_SERVICE = "http://111.231.243.103:8090/fireControl/";
     public static final String ANDROID_DENG_SERVICE = "http://10.0.0.31:8080/";//邓超";
     public static final String ANDROID_TIAN_SERVICE = "http://10.0.0.50:8080/";//邓超";
-    public static final String ANDROID_BAIDU_SERVICE = "http://www.zgjiuan.cn/";
+    public static final String ANDROID_BAIDU_SERVICE = "http://111.231.243.103:8090/fireControl/";
     private static boolean sIsDebug;
 
     static String getNetWorkName() {

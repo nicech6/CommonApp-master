@@ -6,10 +6,14 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -17,6 +21,7 @@ import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -74,6 +79,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -162,6 +168,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                     });
         }
     };
+    private MediaPlayer mMediaPlayer;
 
     public String getUrl(String id) {
         String url = "";
@@ -172,6 +179,10 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getData(String url) {
         showSuccessDialog(this, url);
+        if (shouldPlayBeep && mMediaPlayer != null) {
+            mMediaPlayer.start();
+        }
+        shouldPlayBeep = false;
 
     }
 
@@ -202,11 +213,14 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         return R.layout.activity_main_mvp_third;
     }
 
+    private boolean shouldPlayBeep;
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+        baijingyin();
 
         presenter = new HomeThirdPresenter(this, this);
 //        tv_title.setText(R.string.jiuan_xiaofng);
@@ -240,6 +254,41 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         initRecycleView();
         checkVersion();
         handler.post(task);//立即调用
+    }
+
+    private void baijingyin() {
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        AudioManager audioService = (AudioManager) this
+                .getSystemService(Context.AUDIO_SERVICE);
+        if (audioService.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
+            shouldPlayBeep = true;
+        } else {
+            shouldPlayBeep = false;
+        }
+        mMediaPlayer = new MediaPlayer();
+
+        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
+        mMediaPlayer
+                .setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer player) {
+                        player.seekTo(0);
+                    }
+                });
+        AssetManager assetManager = this.getAssets();
+        AssetFileDescriptor file = null;
+        try {
+            file = assetManager.openFd("baojing.mp3");
+            mMediaPlayer.setDataSource(file.getFileDescriptor(),
+                    file.getStartOffset(), file.getLength());
+            file.close();
+            mMediaPlayer.setVolume(100, 100);
+            mMediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -443,7 +492,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                     MvpThirdMainActivity.this.startActivity(intent);
                     return;
                 }
-                if (mCompanyType.equals("企业监管") ) {
+                if (mCompanyType.equals("企业监管")) {
                     whatActivity(2);
                 } else {
                     INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
@@ -459,7 +508,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                     MvpThirdMainActivity.this.startActivity(intent);
                     return;
                 }
-                if (mCompanyType.equals("企业监管") ) {
+                if (mCompanyType.equals("企业监管")) {
                     whatActivity(1);
                 } else {
                     INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
