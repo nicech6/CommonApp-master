@@ -1,6 +1,7 @@
 package com.mvp_0726.project_0726.home.presenter;
 
 
+import com.client.HomeNumberBean;
 import com.mvp_0726.common.base.codereview.BasePresenterImpl;
 import com.mvp_0726.common.event.CommonEvent;
 import com.mvp_0726.common.network.HttpObservable;
@@ -175,6 +176,35 @@ public class HomeThirdPresenter extends BasePresenterImpl<HomeContract.View, Mvp
                     public void onComplete() {
                         super.onComplete();
 //                        dismissLoadingDialog();
+                    }
+                });
+    }
+
+    @Override
+    public void getClientEquipmentCount(String personId) {
+        HttpObservable.getObservable(apiRetrofit.getClientequipmentcount(personId))
+                .subscribe(new HttpResultObserver<HomeNumberBean>() {
+                    @Override
+                    protected void onLoading(Disposable d) {
+//                        showLoadingDialog("登录中...");
+                    }
+
+                    @Override
+                    protected void onSuccess(HomeNumberBean o) {
+                        dismissLoadingDialog();
+                        if (getView() != null) {
+                            if (10000 == o.getStatus()) {
+                                EventBus.getDefault().postSticky(new CommonEvent(Constans.CLIENTNUMBER, o.getResult()));
+                            } else {
+                                EventBus.getDefault().postSticky(new CommonEvent(Constans.ERROR, o.getMessage()));
+                            }
+                        }
+                    }
+
+                    @Override
+                    protected void onFail(Exception e) {
+//                        dismissLoadingDialog();
+                        EventBus.getDefault().postSticky(new CommonEvent(Constans.ERROR, e.toString()));
                     }
                 });
     }

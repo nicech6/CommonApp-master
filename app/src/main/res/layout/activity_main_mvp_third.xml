@@ -27,7 +27,7 @@
             android:background="@color/transition"
             android:gravity="right|center_vertical"
             android:paddingRight="20dp"
-            android:text="3333"
+            tools:text="3333"
             android:textColor="@color/white"
             android:textSize="@dimen/txt_size_18"
             tools:ignore="HardcodedText" />

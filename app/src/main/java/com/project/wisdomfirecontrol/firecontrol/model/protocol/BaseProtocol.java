@@ -43,8 +43,8 @@ public class BaseProtocol {
                     // 手动解析json字符串
                     JSONObject obj = new JSONObject(json);
                     // 获取状态码
-                    boolean status = obj.getBoolean("success");
-                    if (status) {      // 请求成功
+                    int status = obj.getInt("status");
+                    if (10000 == status) {      // 请求成功
                         Gson gson = new Gson();
                         T bean = gson.fromJson(json, clazz);
 

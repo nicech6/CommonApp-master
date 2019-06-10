@@ -219,7 +219,10 @@ public class LoginActivity extends com.mvp_0726.common.base.codereview.BaseActiv
         imagthpath = personel.getImagthpath();
         String orgShortName = personel.getOrgShortName();
 
-        String roleName = personel.getRole().get(0).getRoleName();
+        String roleName = null;
+        if (null != personel.getRole() && personel.getRole().size() > 0) {
+            roleName = personel.getRole().get(0).getRoleName();
+        }
         String companyType = personel.getCompanyType();
         if (!TextUtils.isEmpty(orgShortName) && !TextUtils.isEmpty(roleName)) {
             companyLogoName = orgShortName + "-" + roleName;
@@ -232,6 +235,7 @@ public class LoginActivity extends com.mvp_0726.common.base.codereview.BaseActiv
         SharedPreUtil.saveString(Global.mContext, "companyName", companyName);
         SharedPreUtil.saveString(Global.mContext, "companyType", companyType);
         SharedPreUtil.saveString(Global.mContext, "orgShortName", roleName);
+        SharedPreUtil.saveInt(Global.mContext, "isuser", personel.getIsuser());
 //        SharedPreUtil.saveString(Global.mContext, "orgShortName", companyLogoName);
 
         if (!TextUtils.isEmpty(imagthpath)) {

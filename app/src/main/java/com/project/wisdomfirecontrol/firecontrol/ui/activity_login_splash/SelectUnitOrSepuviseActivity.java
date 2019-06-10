@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.client.RegisterClientActivity;
 import com.mvp_0726.project_0726.login.ui.LoginActivity;
 import com.project.wisdomfirecontrol.R;
 import com.project.wisdomfirecontrol.common.base.BaseActivity;
@@ -27,6 +28,7 @@ public class SelectUnitOrSepuviseActivity extends BaseActivity {
     private GifImageView gifimage;
     private TextView tv_login_type_unit, tv_login_type_supevice, tv_spase;
     private RelativeLayout.LayoutParams params;
+    private TextView mTextViewClient;
 
     @Override
     public int getLayoutRes() {
@@ -39,6 +41,7 @@ public class SelectUnitOrSepuviseActivity extends BaseActivity {
         tv_spase = findView(R.id.tv_spase);
         ll_title.setVisibility(View.GONE);
         ll_person_type = findView(R.id.ll_person_type);
+        mTextViewClient = (TextView) findViewById(R.id.tv_login_type_client);
 
         ll_person_type.setBackgroundResource(R.drawable.bg);
         tv_login_type_unit = findView(R.id.tv_login_type_unit);
@@ -95,6 +98,7 @@ public class SelectUnitOrSepuviseActivity extends BaseActivity {
     public void initListener() {
         tv_login_type_unit.setOnClickListener(this);
         tv_login_type_supevice.setOnClickListener(this);
+        mTextViewClient.setOnClickListener(this);
     }
 
     @Override
@@ -111,7 +115,15 @@ public class SelectUnitOrSepuviseActivity extends BaseActivity {
             case R.id.tv_login_type_supevice:
                 register();
                 break;
+            case R.id.tv_login_type_client:
+                registerclient();
+                break;
         }
+    }
+
+    private void registerclient() {
+        Intent intent = new Intent(SelectUnitOrSepuviseActivity.this, RegisterClientActivity.class);
+        super.startActivity(intent);
     }
 
     private void login() {

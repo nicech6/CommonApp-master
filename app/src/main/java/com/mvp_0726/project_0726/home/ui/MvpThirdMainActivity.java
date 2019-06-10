@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -16,16 +17,19 @@ import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bean.BaojingDialogBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.client.HomeNumberBean;
 import com.mvp_0726.common.base.codereview.BaseActivity;
 import com.mvp_0726.common.event.CommonEvent;
 import com.mvp_0726.common.event.NetWorkChangeEvent;
+import com.mvp_0726.common.network.ApiRetrofit;
 import com.mvp_0726.common.network.HttpObservable;
 import com.mvp_0726.common.network.HttpResultObserver;
 import com.mvp_0726.common.utils.Constans;
@@ -48,12 +52,14 @@ import com.mvp_0726.project_0726.ui.setting.NewSettingManagerActivity;
 import com.mvp_0726.project_0726.utils.StringUtils;
 import com.mvp_0726.project_0726.utils.XunFeiUtils;
 import com.mvp_0726.project_0726.web.ui.WebH5Activity;
+import com.mvp_0726.service.BaojingDialog;
 import com.project.wisdomfirecontrol.R;
 import com.project.wisdomfirecontrol.common.base.Const;
+import com.project.wisdomfirecontrol.common.base.UserInfo;
+import com.project.wisdomfirecontrol.common.base.UserManage;
 import com.project.wisdomfirecontrol.common.util.LogUtil;
 import com.project.wisdomfirecontrol.common.util.SharedPreUtil;
 import com.project.wisdomfirecontrol.firecontrol.download.UpdateManager;
-import com.project.wisdomfirecontrol.firecontrol.model.bean.login.LoginChangeBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.LoginChangeDataBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.MenuDatasBean;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.MenuDatasBeanX;
@@ -122,6 +128,74 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
     private TextView mTv2;
     private TextView mTv3;
 
+    private Handler handler = new Handler();
+    private Runnable task = new Runnable() {
+        public void run() {
+            // TODO Auto-generated method stub
+            handler.postDelayed(this, 10 * 1000);//设置循环时间，此处是10秒
+            //需要执行的代码
+//            Log.d(TAG, "task");
+
+            HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().getBaojingDialog("1", StringUtils.getUserPid(getApplicationContext()), "1", "16"))
+                    .subscribe(new HttpResultObserver<BaojingDialogBean>() {
+
+                        @Override
+                        protected void onLoading(Disposable d) {
+
+                        }
+
+                        @Override
+                        protected void onSuccess(BaojingDialogBean o) {
+                            if (o != null && o.getData() != null && o.getData().size() > 0) {
+                                for (int i = 0; i < o.getData().size(); i++) {
+                                    if ("2".equals(o.getData().get(i).getState())) {
+                                        EventBus.getDefault().post(getUrl(o.getData().get(i).getId()));
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        protected void onFail(Exception e) {
+
+                        }
+                    });
+        }
+    };
+
+    public String getUrl(String id) {
+        String url = "";
+        url = "http://www.zgjiuan.cn/sensorQY/showcall110.action?sensorid=" + id + "&title=报警信息";
+        return url;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getData(String url) {
+        showSuccessDialog(this, url);
+
+    }
+
+    BaojingDialog mBaojingDialog;
+
+    public void showSuccessDialog(Context context, String url) {
+        if (mBaojingDialog == null) {
+            mBaojingDialog = new BaojingDialog(context);
+        }
+        mBaojingDialog.setUil(url);
+        mBaojingDialog.setDialogCallback(new BaojingDialog.Dialogcallback() {
+            @Override
+            public void dialogdo(LinearLayout container) {
+                mBaojingDialog.dismiss();
+            }
+
+            @Override
+            public void dialogcancle() {
+                mBaojingDialog.dismiss();
+            }
+        });
+
+        mBaojingDialog.show();
+    }
 
     @Override
     protected int getContentViewResId() {
@@ -133,6 +207,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+
         presenter = new HomeThirdPresenter(this, this);
 //        tv_title.setText(R.string.jiuan_xiaofng);
         iv_back.setVisibility(View.INVISIBLE);
@@ -151,7 +226,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
 
         recyclerView.setLayoutManager(new GridLayoutManager(MvpThirdMainActivity.this, Const.COUNT_THIRD));
         mCompanyType = SharedPreUtil.getString(this, "companyType", "");
-        if (mCompanyType.equals("企业监管")) {
+        if (mCompanyType.equals("企业监管") || 1 == SharedPreUtil.getInt(this, "isuser", 0)) {
             mLianStr = "联网设备";
             mBaoStr = "报警设备";
             mGuStr = "故障设备";
@@ -164,6 +239,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
         initRecycleView();
         checkVersion();
+        handler.post(task);//立即调用
     }
 
 
@@ -241,10 +317,19 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
         if (presenter != null) {
 //            ApiRetrofit.changeApiBaseUrl(NetworkUrl.ANDROID_BAIDU_SERVICE);
-            if (mCompanyType.equals("企业监管")) {
-                presenter.getEquipmentCount(pid);
+            UserInfo userIdInfo = UserManage.getInstance().getUserIdInfo(com.project.wisdomfirecontrol.common.base.Global.mContext);
+            String userid = userIdInfo.getUserid();
+            if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+                presenter.getClientEquipmentCount(userid);
+                if (TextUtils.isEmpty(orgShortName)) {//+ mCompanyType
+                    tv_app_company.setText("用户端");
+                }
             } else {
-                presenter.getdanweiNum(pid);
+                if (mCompanyType.equals("企业监管")) {
+                    presenter.getEquipmentCount(pid);
+                } else {
+                    presenter.getdanweiNum(pid);
+                }
             }
             presenter.getAppNum(pid, mId);
             new Thread(new Runnable() {
@@ -336,6 +421,12 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 break;
 
             case R.id.tv_1:
+                if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+                    intent = new Intent(MvpThirdMainActivity.this, NewSettingManagerActivity.class);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                    return;
+                }
+
                 if (mCompanyType.equals("企业监管")) {
                     whatActivity(0);
                 } else {
@@ -347,7 +438,12 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 }
                 break;
             case R.id.tv_2:
-                if (mCompanyType.equals("企业监管")) {
+                if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+                    intent = new Intent(MvpThirdMainActivity.this, NewSettingManagerActivity.class);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                    return;
+                }
+                if (mCompanyType.equals("企业监管") ) {
                     whatActivity(2);
                 } else {
                     INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
@@ -358,7 +454,12 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 }
                 break;
             case R.id.tv_3:
-                if (mCompanyType.equals("企业监管")) {
+                if (1 == SharedPreUtil.getInt(this, "isuser", 0)) {
+                    intent = new Intent(MvpThirdMainActivity.this, NewSettingManagerActivity.class);
+                    MvpThirdMainActivity.this.startActivity(intent);
+                    return;
+                }
+                if (mCompanyType.equals("企业监管") ) {
                     whatActivity(1);
                 } else {
                     INTENT_VALUE = StringUtils.getItemNameSuper(Constant.ORGANSMANAGE);
@@ -408,6 +509,12 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 mTv1.setText(mLianStr + "    " + bean.getLwTotal());
                 mTv2.setText(mGuStr + "    " + bean.getGzlxTotal());
                 mTv3.setText(mBaoStr + "    " + bean.getBjTotal());
+                break;
+            case Constans.CLIENTNUMBER:
+                HomeNumberBean.ResultBean resultBean = (HomeNumberBean.ResultBean) ecEvent.getData();
+                mTv1.setText(mLianStr + "    " + resultBean.getOnlineCount());
+                mTv2.setText(mGuStr + "    " + resultBean.getFaultCount());
+                mTv3.setText(mBaoStr + "    " + resultBean.getAlarmCount());
                 break;
         }
     }
@@ -730,6 +837,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         if (mXunFeiUtils != mXunFeiUtils) {
             mXunFeiUtils.stopSpeak();
         }
+        handler.removeCallbacks(task);
     }
 
     @Override

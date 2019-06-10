@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.client.HomeNumberBean;
 import com.mvp_0726.common.base.codereview.BaseActivity;
 import com.mvp_0726.common.event.CommonEvent;
 import com.mvp_0726.common.utils.Constans;
@@ -247,6 +248,12 @@ public class SettingPoliceOnlineActivity extends BaseActivity implements Setting
             case Constans.EQUIPMENTCOUNTSUCESS:
                 EquipmentCount.DataBean data = (EquipmentCount.DataBean) ecEvent.getData();
                 showEquipmentCount(data);
+                break;
+            case Constans.CLIENTNUMBER:
+                HomeNumberBean.ResultBean resultBean = (HomeNumberBean.ResultBean) ecEvent.getData();
+                tv_rv_item_num_1.setText(String.valueOf(resultBean.getOnlineCount()));
+                tv_rv_item_num_2.setText(String.valueOf(resultBean.getAlarmCount()));
+                tv_rv_item_num_3.setText(String.valueOf(resultBean.getFaultCount()));
                 break;
         }
     }

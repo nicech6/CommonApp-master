@@ -166,7 +166,7 @@ public interface IHttpService {
     int TYPE_DELETESENSOR = 8;//删除设备
     int TYPE_GETAREAPERSON = 9;//获取消防负责人
     int TYPE_GETORGANDETAILBYID = 10;//获取公司信息
-    int TYPE_GETOBD= 11;//获取obd信息
+    int TYPE_GETOBD = 11;//获取obd信息
 
     String XIAQU_UNIT = "辖区单位";
     String ONLINE_UNIT = "联网单位";
@@ -319,6 +319,13 @@ public interface IHttpService {
     @POST("getsensor.action")
     Call<JsonObject> getsensor(
             @Query("pid") String pid);
+
+    /*用户端设备管理*/
+    @POST("sensorQY/listByPerson.action")
+    Call<JsonObject> getClientsensor(
+            @Query("personId") String personId
+            , @Query("pageSize") String pageSize
+            , @Query("pageNo") String pageNo);
 
     /*删除设备管理*/
     @POST("deletesensor.action")

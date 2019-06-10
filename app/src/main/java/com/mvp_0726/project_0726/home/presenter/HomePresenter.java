@@ -148,4 +148,9 @@ public class HomePresenter extends BasePresenterImpl<HomeContract.View, MvpMainA
     public void getdanweiNum(String pid) {
 
     }
+
+    @Override
+    public void getClientEquipmentCount(String personId) {
+
+    }
 }
