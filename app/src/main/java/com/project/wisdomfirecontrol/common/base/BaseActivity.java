@@ -127,6 +127,9 @@ public abstract class BaseActivity extends AppCompatActivity
     public void showToast(String text) {
         Global.showToast(text);
     }
+    public void showLongToast(String text) {
+        Global.showLongToast(text);
+    }
 
     public void showAnimToast(String text) {
         T.showAnimToast(this, text);

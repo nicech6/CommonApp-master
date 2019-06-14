@@ -269,14 +269,12 @@
                 android:id="@+id/edt_user_pwd"
                 style="@style/edt_txt_13sp_black"
                 android:hint="登录密码(至少包含字母数字8位)"
-                android:inputType="numberPassword"
                 tools:ignore="HardcodedText,RtlSymmetry" />
 
             <EditText
                 android:id="@+id/tv_user_pwd_again"
                 style="@style/edt_txt_13sp_black"
                 android:hint="确认登录密码"
-                android:inputType="numberPassword"
                 tools:ignore="HardcodedText,RtlSymmetry" />
 
             <LinearLayout

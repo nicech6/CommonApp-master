@@ -19,13 +19,13 @@ import retrofit2.http.Query;
 public interface IHttpService {
 
     String VIDEO_IP = "120.78.217.251";
-    String HOST_IP = "http://111.231.243.103:8090/fireControl/";
+    String HOST_IP = "http://www.zgjiuan.cn/";
     //        String HOST_IP = "www.zgjiuan.cn/";//邓超
     //        String HOST_IP = "10.0.0.65:8080";//小古
     String BASE_URL = "http://" + HOST_IP;
-    String BASE_URL_IP = "http://111.231.243.103:8090/fireControl/";
+    String BASE_URL_IP = "http://www.zgjiuan.cn/";
     String HOST_URL = BASE_URL + "h5/";
-    String HOST_URL_Z = "http://111.231.243.103:8090/fireControl/h5/";
+    String HOST_URL_Z = "http://www.zgjiuan.cn/h5/";
     String HOST_URL_CHANGE = BASE_URL_IP + "h5/";
     /*企业端*/
     String HOME_URL = BASE_URL_IP + "H5/fire/";
@@ -134,9 +134,9 @@ public interface IHttpService {
     String URL_H5_MY_AUDIT = BASE_URL_IP + "jsps/application/aptitude/aptitude-audit.jsp";
 
     /*机构管理*/
-    String URL_H5_ORGANSMANAGE = "http://111.231.243.103:8090/fireControl/jsps/application/system/organ/organ-list.jsp";
+    String URL_H5_ORGANSMANAGE = "http://www.zgjiuan.cn/jsps/application/system/organ/organ-list.jsp";
     /*区域管理*/
-    String URL_H5_AREAMANAGE = "http://111.231.243.103:8090/fireControl/jsps/system/areaList.jsp";
+    String URL_H5_AREAMANAGE = "http://www.zgjiuan.cn/jsps/system/areaList.jsp";
 
 
     //    0: 账号密码登录

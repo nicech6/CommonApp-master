@@ -2,6 +2,7 @@ package com.mvp_0726.common.network;
 
 import com.bean.BaojingDialogBean;
 import com.client.HomeNumberBean;
+import com.client.RegisterBean;
 import com.mvp_0726.project_0726.bean.settingpolice.GetsensorObdSuccessBean;
 import com.mvp_0726.project_0726.home.model.GridCountBean;
 import com.mvp_0726.project_0726.home.model.MarqueeBean;
@@ -30,7 +31,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    String uploadfile = "http://111.231.243.103:8090/fireControl/zgbd/file/fileUploadStatus";
+    String uploadfile = "http://www.zgjiuan.cn/zgbd/file/fileUploadStatus";
     String HOST_IP = "zgbd_fireControl/h5/";
     String HOST_FIRECONTROL = "zgbd_fireControl/application/message/";
 
@@ -44,7 +45,7 @@ public interface ApiService {
     @Headers({"urlname:zgjiuan"})
     @FormUrlEncoded
     @POST("login/register_user.action")
-    Observable<LoginChangeBean> loginClient(
+    Observable<RegisterBean> loginClient(
             @Field("position") String position
             , @Field("orgName") String orgName
             , @Field("address") String address
@@ -152,7 +153,7 @@ public interface ApiService {
     /*获取单位数目*/
     @Headers({"urlname:zgjiuan"})
     @FormUrlEncoded
-    @POST("sensorQY/getData.action")
-    Observable<BaojingDialogBean> getBaojingDialog(@Field("type") String type, @Field("pid") String pid, @Field("pageNo") String pageNo, @Field("pageSize") String pageSize);
+    @POST("sensorQY/alarm_sensor.action")
+    Observable<BaojingDialogBean> getBaojingDialog(@Field("pid") String pid);
 
 }

@@ -5,6 +5,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -30,6 +31,7 @@ import android.widget.TextView;
 
 import com.bean.BaojingDialogBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.client.BaojingEvent;
 import com.client.HomeNumberBean;
 import com.mvp_0726.common.base.codereview.BaseActivity;
 import com.mvp_0726.common.event.CommonEvent;
@@ -58,6 +60,7 @@ import com.mvp_0726.project_0726.utils.StringUtils;
 import com.mvp_0726.project_0726.utils.XunFeiUtils;
 import com.mvp_0726.project_0726.web.ui.WebH5Activity;
 import com.mvp_0726.service.BaojingDialog;
+import com.mvp_0726.service.BaojingService;
 import com.project.wisdomfirecontrol.R;
 import com.project.wisdomfirecontrol.common.base.Const;
 import com.project.wisdomfirecontrol.common.base.UserInfo;
@@ -134,56 +137,21 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
     private TextView mTv2;
     private TextView mTv3;
 
-    private Handler handler = new Handler();
-    private Runnable task = new Runnable() {
-        public void run() {
-            // TODO Auto-generated method stub
-            handler.postDelayed(this, 10 * 1000);//设置循环时间，此处是10秒
-            //需要执行的代码
-//            Log.d(TAG, "task");
-
-            HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().getBaojingDialog("1", StringUtils.getUserPid(getApplicationContext()), "1", "16"))
-                    .subscribe(new HttpResultObserver<BaojingDialogBean>() {
-
-                        @Override
-                        protected void onLoading(Disposable d) {
-
-                        }
-
-                        @Override
-                        protected void onSuccess(BaojingDialogBean o) {
-                            if (o != null && o.getData() != null && o.getData().size() > 0) {
-                                for (int i = 0; i < o.getData().size(); i++) {
-                                    if ("2".equals(o.getData().get(i).getState())) {
-                                        EventBus.getDefault().post(getUrl(o.getData().get(i).getId()));
-                                    }
-                                }
-                            }
-                        }
-
-                        @Override
-                        protected void onFail(Exception e) {
-
-                        }
-                    });
-        }
-    };
     private MediaPlayer mMediaPlayer;
 
-    public String getUrl(String id) {
-        String url = "";
-        url = "http://www.zgjiuan.cn/sensorQY/showcall110.action?sensorid=" + id + "&title=报警信息";
-        return url;
-    }
-
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void getData(String url) {
-        showSuccessDialog(this, url);
-        if (shouldPlayBeep && mMediaPlayer != null) {
-            mMediaPlayer.start();
+    public void getData(BaojingEvent event) {
+        if (event.getUrl() != null) {
+            showSuccessDialog(this, event.getUrl());
+            if (mMediaPlayer == null) {
+                mMediaPlayer = new MediaPlayer();
+            }
+            if (!mMediaPlayer.isPlaying()){
+                baijingyin();
+                mMediaPlayer.start();
+            }
+//            shouldPlayBeep = false;
         }
-        shouldPlayBeep = false;
-
     }
 
     BaojingDialog mBaojingDialog;
@@ -204,6 +172,14 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 mBaojingDialog.dismiss();
             }
         });
+        mBaojingDialog.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.stop();
+                }
+            }
+        });
 
         mBaojingDialog.show();
     }
@@ -213,7 +189,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         return R.layout.activity_main_mvp_third;
     }
 
-    private boolean shouldPlayBeep;
+//    private boolean shouldPlayBeep;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -221,6 +197,9 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
             EventBus.getDefault().register(this);
         }
         baijingyin();
+//        mMediaPlayer.start();
+        Intent intentFive = new Intent(this, BaojingService.class);
+        startService(intentFive);
 
         presenter = new HomeThirdPresenter(this, this);
 //        tv_title.setText(R.string.jiuan_xiaofng);
@@ -253,21 +232,21 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         }
         initRecycleView();
         checkVersion();
-        handler.post(task);//立即调用
     }
 
     private void baijingyin() {
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         AudioManager audioService = (AudioManager) this
                 .getSystemService(Context.AUDIO_SERVICE);
-        if (audioService.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
-            shouldPlayBeep = true;
-        } else {
-            shouldPlayBeep = false;
-        }
+//        if (audioService.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
+//            shouldPlayBeep = true;
+//        } else {
+//            shouldPlayBeep = false;
+//        }
         mMediaPlayer = new MediaPlayer();
 
         mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mMediaPlayer.setLooping(true);
 
 
         mMediaPlayer
@@ -280,7 +259,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         AssetManager assetManager = this.getAssets();
         AssetFileDescriptor file = null;
         try {
-            file = assetManager.openFd("baojing.mp3");
+            file = assetManager.openFd("123.mp3");
             mMediaPlayer.setDataSource(file.getFileDescriptor(),
                     file.getStartOffset(), file.getLength());
             file.close();
@@ -886,7 +865,9 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         if (mXunFeiUtils != mXunFeiUtils) {
             mXunFeiUtils.stopSpeak();
         }
-        handler.removeCallbacks(task);
+        if (mMediaPlayer != null) {
+            mMediaPlayer.release();
+        }
     }
 
     @Override

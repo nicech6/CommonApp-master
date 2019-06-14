@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
@@ -597,15 +598,17 @@ public class RegisterClientActivity extends BaseActivity {
                     protected void onSuccess(RegisterBean o) {
                         if ("注册成功".equals(o.getMessage())) {
                             showToast("注册成功");
+                            Intent intent = new Intent(RegisterClientActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            showLongToast("" + o.getMessage());
                         }
-                        Intent intent = new Intent(RegisterClientActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
                     }
 
                     @Override
                     protected void onFail(Exception e) {
-                        showToast("注册失败");
+                        showLongToast("" + e.getMessage());
                     }
                 });
     }

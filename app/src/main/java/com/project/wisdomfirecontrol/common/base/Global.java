@@ -137,6 +137,19 @@ public class Global {
         });
     }
 
+    public static void showLongToast(final String msg) {
+        runOnUIThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mToast == null) {
+                    mToast = Toast.makeText(mContext, msg, Toast.LENGTH_LONG);
+                }
+                mToast.setText(msg);
+                mToast.show();
+            }
+        });
+    }
+
     public static String getString(int stringId) {
         return mContext.getResources().getString(stringId);
     }

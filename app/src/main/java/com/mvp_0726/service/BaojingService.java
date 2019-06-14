@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bean.BaojingDialogBean;
+import com.client.BaojingEvent;
 import com.lzy.okhttputils.OkHttpUtils;
 import com.lzy.okhttputils.callback.StringCallback;
 import com.mvp_0726.common.Model.FileBean;
@@ -49,7 +50,7 @@ public class BaojingService extends Service {
             //需要执行的代码
             Log.d(TAG, "task");
 
-            HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().getBaojingDialog("1", StringUtils.getUserPid(getApplicationContext()), "1", "16"))
+            HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().getBaojingDialog("yun"))
                     .subscribe(new HttpResultObserver<BaojingDialogBean>() {
 
                         @Override
@@ -62,7 +63,7 @@ public class BaojingService extends Service {
                             if (o != null && o.getData() != null && o.getData().size() > 0) {
                                 for (int i = 0; i < o.getData().size(); i++) {
                                     if ("2".equals(o.getData().get(i).getState())) {
-                                        EventBus.getDefault().post("hehe");
+                                        EventBus.getDefault().post(new BaojingEvent(getUrl(o.getData().get(i).getId())));
                                     }
                                 }
                             }
@@ -75,6 +76,12 @@ public class BaojingService extends Service {
                     });
         }
     };
+
+    public String getUrl(String id) {
+        String url = "";
+        url = "http://www.zgjiuan.cn/sensorQY/showcall110.action?sensorid=" + id + "&title=报警信息";
+        return url;
+    }
 
     @Nullable
     @Override

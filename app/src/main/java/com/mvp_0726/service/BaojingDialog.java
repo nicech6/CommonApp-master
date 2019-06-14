@@ -109,6 +109,9 @@ public class BaojingDialog {
     public void setDialogCallback(Dialogcallback dialogcallback) {
         this.dialogcallback = dialogcallback;
     }
+    public Dialog getDialog(){
+        return  dialog;
+    }
 
     /**
      * @category Set The Content of the TextView
