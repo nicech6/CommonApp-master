@@ -171,6 +171,7 @@
                 android:layout_height="@dimen/txt_dp_30"
                 android:layout_marginStart="@dimen/txt_dp_20"
                 android:layout_marginTop="@dimen/txt_dp_5"
+                android:visibility="gone"
                 android:layout_marginEnd="@dimen/txt_dp_20"
                 android:layout_marginBottom="@dimen/txt_dp_5"
                 android:orientation="horizontal"
@@ -206,7 +207,7 @@
             <EditText
                 android:id="@+id/tv_company_name"
                 style="@style/edt_txt_13sp_black"
-                android:hint="公司全称（必填）"
+                android:hint="机构全称（必填）"
                 tools:ignore="HardcodedText,RtlSymmetry" />
 
             <EditText
@@ -219,6 +220,7 @@
                 android:id="@+id/tv_user_area"
                 style="@style/edt_txt_13sp_black"
                 android:hint="住址"
+                android:visibility="gone"
                 tools:ignore="HardcodedText,RtlSymmetry" />
 
             <EditText

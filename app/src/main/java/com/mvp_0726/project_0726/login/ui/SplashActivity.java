@@ -160,7 +160,8 @@ public class SplashActivity extends com.mvp_0726.common.base.codereview.BaseActi
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.ACCESS_FINE_LOCATION,
                         Manifest.permission.ACCESS_WIFI_STATE,
-                        Manifest.permission.CAMERA
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.READ_PHONE_STATE
                 }
         );
         // 如果这3个权限全都拥有, 则直接执行备份代码
@@ -181,7 +182,8 @@ public class SplashActivity extends com.mvp_0726.common.base.codereview.BaseActi
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.ACCESS_FINE_LOCATION,
                         Manifest.permission.ACCESS_WIFI_STATE,
-                        Manifest.permission.CAMERA
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.READ_PHONE_STATE
                 },
                 MY_PERMISSION_REQUEST_CODE
         );

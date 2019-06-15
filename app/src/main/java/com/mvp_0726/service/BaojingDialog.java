@@ -7,10 +7,12 @@ import android.net.http.SslError;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -21,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.project.wisdomfirecontrol.R;
+import com.project.wisdomfirecontrol.common.util.Utils;
 
 public class BaojingDialog {
     Context context;
@@ -109,8 +112,9 @@ public class BaojingDialog {
     public void setDialogCallback(Dialogcallback dialogcallback) {
         this.dialogcallback = dialogcallback;
     }
-    public Dialog getDialog(){
-        return  dialog;
+
+    public Dialog getDialog() {
+        return dialog;
     }
 
     /**
@@ -148,6 +152,22 @@ public class BaojingDialog {
     }
 
     /**
+     * Js调用Android Native代码内部类
+     */
+    class toAppAgent {
+
+        @JavascriptInterface
+        public void closeDialog() {
+            Log.i("TAG", "js call native method: close()");
+            //关闭网页显示，回到首页
+            if (dialog != null) {
+                dialog.dismiss();
+            }
+        }
+    }
+
+
+    /**
      * 初始化webview
      */
     private void initWebView() {
@@ -159,6 +179,7 @@ public class BaojingDialog {
         //不开启，公众号网页 下方 阅读原文点击无效
         settings.setDomStorageEnabled(true);
         settings.setSavePassword(false);
+        mWv.addJavascriptInterface(new toAppAgent(), "toAppAgent");
         //关闭缓存
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);

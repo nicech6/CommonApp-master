@@ -530,10 +530,10 @@ public class RegisterClientActivity extends BaseActivity {
     }
 
     private void tv_success() {
-        if (TextUtils.isEmpty(tv_address_detail_room.getText().toString())) {
-            showToast("请先填写详细地址");
-            return;
-        }
+//        if (TextUtils.isEmpty(tv_address_detail_room.getText().toString())) {
+//            showToast("请先填写详细地址");
+//            return;
+//        }
         if (TextUtils.isEmpty(tv_company_name.getText().toString())) {
             showToast("请先填写公司名称！");
             return;
@@ -542,10 +542,10 @@ public class RegisterClientActivity extends BaseActivity {
             showToast("请先填写姓名！");
             return;
         }
-        if (TextUtils.isEmpty(tv_user_area.getText().toString())) {
-            showToast("请先填写住址！");
-            return;
-        }
+//        if (TextUtils.isEmpty(tv_user_area.getText().toString())) {
+//            showToast("请先填写住址！");
+//            return;
+//        }
         String unit_personal_frst_phone = tv_user_phone.getText().toString().trim();
         boolean isPhoneNum1 = StringUtils.isMobileNO(unit_personal_frst_phone);
         if (!isPhoneNum1) {
@@ -579,12 +579,12 @@ public class RegisterClientActivity extends BaseActivity {
         bean.setLat(lat);
         bean.setLng(lng);
         bean.setOrgName(tv_company_name.getText().toString());
-        bean.setAddress(tv_user_area.getText().toString());
+//        bean.setAddress(tv_user_area.getText().toString());
 //        bean.setCode(edt_msg_pwd.getText().toString());
         bean.setName(tv_user_name.getText().toString());
         bean.setPassword(user_pwd);
         bean.setTelNum(tv_user_phone.getText().toString());
-        bean.setPosition(tv_address_detail_room.getText().toString());
+//        bean.setPosition(tv_address_detail_room.getText().toString());
 
         HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().loginClient(bean.getPosition(), bean.getOrgName(), bean.getAddress(), bean.getTelNum(), bean.getPassword(), bean.getName(), bean.getLng(), bean.getLat()))
                 .subscribe(new HttpResultObserver<RegisterBean>() {

@@ -31,6 +31,7 @@ import com.mvp_0726.project_0726.home.model.OrgandetailBean;
 import com.mvp_0726.project_0726.home.ui.MvpThirdMainActivity;
 import com.mvp_0726.project_0726.utils.StringUtils;
 import com.mvp_0726.project_0726.web.ui.WebH5Activity;
+import com.project.wisdomfirecontrol.common.base.UserManage;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.LoginChangeBean;
 import com.project.wisdomfirecontrol.firecontrol.ui.activity_setting.ChangerSettingActivity;
 import com.project.wisdomfirecontrol.firecontrol.ui.view.dialog.SuccessDialog;
@@ -49,7 +50,6 @@ public class BaojingService extends Service {
             handler.postDelayed(this, 10 * 1000);//设置循环时间，此处是10秒
             //需要执行的代码
             Log.d(TAG, "task");
-
             HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().getBaojingDialog("yun"))
                     .subscribe(new HttpResultObserver<BaojingDialogBean>() {
 
@@ -78,8 +78,9 @@ public class BaojingService extends Service {
     };
 
     public String getUrl(String id) {
+        String userid = UserManage.getInstance().getUserIdInfo(BaojingService.this).getUserid();
         String url = "";
-        url = "http://www.zgjiuan.cn/sensorQY/showcall110.action?sensorid=" + id + "&title=报警信息";
+        url = "http://www.zgjiuan.cn/sensorQY/showcall110.action?sensorid=" + id + "&title=报警信息" + "&userId=" + userid;
         return url;
     }
 

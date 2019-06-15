@@ -150,7 +150,7 @@ public interface ApiService {
     Observable<DanWeiBean> getDanweiNumber(@Field("pid") String pid);
 
 
-    /*获取单位数目*/
+    /*获取报警弹窗*/
     @Headers({"urlname:zgjiuan"})
     @FormUrlEncoded
     @POST("sensorQY/alarm_sensor.action")

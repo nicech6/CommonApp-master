@@ -146,7 +146,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
             if (mMediaPlayer == null) {
                 mMediaPlayer = new MediaPlayer();
             }
-            if (!mMediaPlayer.isPlaying()){
+            if (!mMediaPlayer.isPlaying()) {
                 baijingyin();
                 mMediaPlayer.start();
             }
@@ -160,6 +160,10 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
         if (mBaojingDialog == null) {
             mBaojingDialog = new BaojingDialog(context);
         }
+        if (mBaojingDialog.getDialog().isShowing()) {
+            return;
+        }
+//        String userid = UserManage.getInstance().getUserIdInfo(MvpThirdMainActivity.this).getUserid();
         mBaojingDialog.setUil(url);
         mBaojingDialog.setDialogCallback(new BaojingDialog.Dialogcallback() {
             @Override
@@ -197,6 +201,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
             EventBus.getDefault().register(this);
         }
         baijingyin();
+//        showSuccessDialog(this, "");
 //        mMediaPlayer.start();
         Intent intentFive = new Intent(this, BaojingService.class);
         startService(intentFive);
