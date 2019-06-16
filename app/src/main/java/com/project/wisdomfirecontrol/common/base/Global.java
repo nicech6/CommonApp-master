@@ -129,7 +129,7 @@ public class Global {
             @Override
             public void run() {
                 if (mToast == null) {
-                    mToast = Toast.makeText(mContext, msg, Toast.LENGTH_SHORT);
+                    mToast = Toast.makeText(mContext, msg, Toast.LENGTH_LONG);
                 }
                 mToast.setText(msg);
                 mToast.show();

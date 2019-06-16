@@ -60,6 +60,7 @@ public class BaojingService extends Service {
 
                         @Override
                         protected void onSuccess(BaojingDialogBean o) {
+//                            new CustomNotification().getData(getApplicationContext());
                             if (o != null && o.getData() != null && o.getData().size() > 0) {
                                 for (int i = 0; i < o.getData().size(); i++) {
                                     if ("2".equals(o.getData().get(i).getState())) {

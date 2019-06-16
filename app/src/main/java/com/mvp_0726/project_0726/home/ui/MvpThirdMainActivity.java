@@ -61,6 +61,7 @@ import com.mvp_0726.project_0726.utils.XunFeiUtils;
 import com.mvp_0726.project_0726.web.ui.WebH5Activity;
 import com.mvp_0726.service.BaojingDialog;
 import com.mvp_0726.service.BaojingService;
+import com.mvp_0726.service.CustomNotification;
 import com.project.wisdomfirecontrol.R;
 import com.project.wisdomfirecontrol.common.base.Const;
 import com.project.wisdomfirecontrol.common.base.UserInfo;
@@ -149,6 +150,7 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
             if (!mMediaPlayer.isPlaying()) {
                 baijingyin();
                 mMediaPlayer.start();
+                new CustomNotification().getData(getApplicationContext());
             }
 //            shouldPlayBeep = false;
         }
