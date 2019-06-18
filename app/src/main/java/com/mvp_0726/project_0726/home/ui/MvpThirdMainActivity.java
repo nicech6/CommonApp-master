@@ -153,6 +153,14 @@ public class MvpThirdMainActivity extends BaseActivity implements HomeContract.V
                 new CustomNotification().getData(getApplicationContext());
             }
 //            shouldPlayBeep = false;
+        } else {
+            if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
+                mMediaPlayer.stop();
+                mMediaPlayer.release();
+            }
+            if (mBaojingDialog != null && mBaojingDialog.getDialog().isShowing()) {
+                mBaojingDialog.dismiss();
+            }
         }
     }
 

@@ -42,6 +42,7 @@ import com.lljjcoder.style.citypickerview.CityPickerView;
 import com.mvp_0726.common.network.ApiRetrofit;
 import com.mvp_0726.common.network.HttpObservable;
 import com.mvp_0726.common.network.HttpResultObserver;
+import com.mvp_0726.common.utils.ToastUtils;
 import com.mvp_0726.project_0726.login.ui.LoginActivity;
 import com.mvp_0726.project_0726.login.ui.SplashActivity;
 import com.project.wisdomfirecontrol.R;
@@ -301,7 +302,7 @@ public class RegisterClientActivity extends BaseActivity {
                     boolean letterDigit = PwdCheckUtil.isLetterDigit(user_pwd);
 //                    Log.d(TAG, "onTextChanged: " + letterDigit);
                     if (!letterDigit) {
-                        showToast("密码需包含母及数字");
+                        ToastUtils.error("密码需包含母及数字");
                         return;
                     }
 
@@ -369,13 +370,13 @@ public class RegisterClientActivity extends BaseActivity {
         phone = tv_user_phone.getText().toString().trim();
 //        phone = "13726870018";
         if (TextUtils.isEmpty(phone)) {
-            showToast("手机号码不能为空");
+            ToastUtils.error("手机号码不能为空");
             return;
         }
         boolean isPhoneNum = StringUtils.isMobileNO(phone);
 
         if (!isPhoneNum) {
-            showToast("请输入有效的手机号码！");
+            ToastUtils.error("请输入有效的手机号码！");
         } else {
             phone = tv_user_phone.getText().toString().trim();
 //            phone = "13726870018";
@@ -436,12 +437,12 @@ public class RegisterClientActivity extends BaseActivity {
                     handler.sendEmptyMessageDelayed(YANZHENGSUCCESS, 2500);
                 } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                     //获取验证码成功
-                    showToast("验证码已经发送");
+                    ToastUtils.success("验证码已经发送");
 
                 } else if (event == SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES) {
                     //返回支持发送验证码的国家列表
                 } else if (event == SMSSDK.RESULT_ERROR) {
-                    showToast("请检查验证码是否正确");
+                    ToastUtils.success("请检查验证码是否正确");
                 }
             } else {
                 int status = 0;
@@ -535,11 +536,11 @@ public class RegisterClientActivity extends BaseActivity {
 //            return;
 //        }
         if (TextUtils.isEmpty(tv_company_name.getText().toString())) {
-            showToast("请先填写公司名称！");
+            ToastUtils.error("请先填写公司名称！");
             return;
         }
         if (TextUtils.isEmpty(tv_user_name.getText().toString())) {
-            showToast("请先填写姓名！");
+            ToastUtils.error("请先填写姓名！");
             return;
         }
 //        if (TextUtils.isEmpty(tv_user_area.getText().toString())) {
@@ -549,27 +550,27 @@ public class RegisterClientActivity extends BaseActivity {
         String unit_personal_frst_phone = tv_user_phone.getText().toString().trim();
         boolean isPhoneNum1 = StringUtils.isMobileNO(unit_personal_frst_phone);
         if (!isPhoneNum1) {
-            showToast("请输入有效的手机号码！");
+            ToastUtils.error("请输入有效的手机号码！");
             return;
         }
         user_pwd = edt_user_pwd.getText().toString().trim();
         user_pwd_again = tv_user_pwd_again.getText().toString().trim();
         if (TextUtils.isEmpty(user_pwd) && TextUtils.isEmpty(user_pwd_again)) {
-            showToast("请填写密码");
+            ToastUtils.error("请填写密码");
             return;
         }
         if (!user_pwd.equals(user_pwd_again)) {
-            showToast("两次密码不一致");
+            ToastUtils.error("两次密码不一致");
             return;
         }
         String msg = tv_send_msg_pwd.getText().toString().trim();
 //        验证成功
         if (!msg.equals("验证成功")) {
-            showToast("请先验证手机号码");
+            ToastUtils.error("请先验证手机号码");
             return;
         }
         if (!cheche_pwd_xieye) {
-            showToast("请先勾选协议");
+            ToastUtils.error("请先勾选协议");
             return;
 
         }
@@ -597,18 +598,18 @@ public class RegisterClientActivity extends BaseActivity {
                     @Override
                     protected void onSuccess(RegisterBean o) {
                         if ("注册成功".equals(o.getMessage())) {
-                            showToast("注册成功");
+                            ToastUtils.success("注册成功");
                             Intent intent = new Intent(RegisterClientActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            showLongToast("" + o.getMessage());
+                            ToastUtils.error("" + o.getMessage());
                         }
                     }
 
                     @Override
                     protected void onFail(Exception e) {
-                        showLongToast("" + e.getMessage());
+                        ToastUtils.error("" + e.getMessage());
                     }
                 });
     }

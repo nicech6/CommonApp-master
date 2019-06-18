@@ -31,6 +31,8 @@ import com.mvp_0726.project_0726.home.model.OrgandetailBean;
 import com.mvp_0726.project_0726.home.ui.MvpThirdMainActivity;
 import com.mvp_0726.project_0726.utils.StringUtils;
 import com.mvp_0726.project_0726.web.ui.WebH5Activity;
+import com.project.wisdomfirecontrol.common.base.Global;
+import com.project.wisdomfirecontrol.common.base.UserInfo;
 import com.project.wisdomfirecontrol.common.base.UserManage;
 import com.project.wisdomfirecontrol.firecontrol.model.bean.login.LoginChangeBean;
 import com.project.wisdomfirecontrol.firecontrol.ui.activity_setting.ChangerSettingActivity;
@@ -44,13 +46,17 @@ import okhttp3.Response;
 public class BaojingService extends Service {
     public static final String TAG = "BaojingService";
     private Handler handler = new Handler();
+
+    UserInfo userIdInfo = UserManage.getInstance().getUserIdInfo(Global.mContext);
+
+    String pid = userIdInfo.getPid();
     private Runnable task = new Runnable() {
         public void run() {
             // TODO Auto-generated method stub
             handler.postDelayed(this, 10 * 1000);//设置循环时间，此处是10秒
             //需要执行的代码
             Log.d(TAG, "task");
-            HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().getBaojingDialog("yun"))
+            HttpObservable.getObservable(ApiRetrofit.getApiRetrofit().getApiServis().getBaojingDialog(pid))
                     .subscribe(new HttpResultObserver<BaojingDialogBean>() {
 
                         @Override
@@ -67,6 +73,8 @@ public class BaojingService extends Service {
                                         EventBus.getDefault().post(new BaojingEvent(getUrl(o.getData().get(i).getId())));
                                     }
                                 }
+                            } else {
+                                EventBus.getDefault().post(new BaojingEvent(null));
                             }
                         }
 
